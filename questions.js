@@ -357,182 +357,162 @@ const GAME_DATA = {
       questions: [
         {
           id: 1,
-          text: 'Hangisini tercih edersin?',
+          text: 'Nerede yaşamak istersin?',
           optionA: {
-            label: 'İstanbul',
-            emoji: '🕌',
-            gradient: ['#FF6B35', '#F7C59F'],
-            image: 'assets/istanbul.png',
-            tags: { bustling: 1, historical: 1, cultural: 1, foodie: 1, lively: 1 }
+            label: 'Yurt İçi',
+            emoji: '🇹🇷',
+            gradient: ['#E31837', '#FF4757'],
+            tags: { domestic: 1, cultural: 1, affordable: 1 }
           },
           optionB: {
-            label: 'Barcelona',
-            emoji: '🏖️',
-            gradient: ['#FFD166', '#FF6B6B'],
-            image: 'assets/barcelona.png',
-            tags: { warm: 1, beach: 1, social: 1, artistic: 1, european: 1 }
+            label: 'Yurt Dışı',
+            emoji: '🌍',
+            gradient: ['#667eea', '#764ba2'],
+            tags: { international: 1, diverse: 1, european: 1, exotic: 1 }
           }
         },
         {
           id: 2,
-          text: 'Hangisini tercih edersin?',
+          text: 'Hangi coğrafya seni çeker?',
           optionA: {
-            label: 'Tokyo',
-            emoji: '🗼',
-            gradient: ['#FF69B4', '#7B68EE'],
-            image: 'assets/tokyo.png',
-            tags: { modern: 1, techy: 1, orderly: 1, foodie: 1, exotic: 1 }
+            label: 'Deniz Kenarı',
+            emoji: '🏖️',
+            gradient: ['#00cec9', '#55efc4'],
+            tags: { beach: 1, warm: 1, relaxed: 1 }
           },
           optionB: {
-            label: 'Berlin',
-            emoji: '🎸',
-            gradient: ['#636E72', '#FD79A8'],
-            image: 'assets/berlin.png',
-            tags: { artistic: 1, nightlife: 1, alternative: 1, affordable: 1, modern: 1 }
+            label: 'Yüksek Rakım',
+            emoji: '🏔️',
+            gradient: ['#74b9ff', '#dfe6e9'],
+            tags: { natural: 1, peaceful: 1, cozy: 1 }
           }
         },
         {
           id: 3,
-          text: 'Hangisini tercih edersin?',
+          text: 'Nasıl bir yaşam temposu istersin?',
           optionA: {
-            label: 'New York',
-            emoji: '🗽',
+            label: 'Hareketli',
+            emoji: '🏙️',
             gradient: ['#4834d4', '#686de0'],
-            image: 'assets/newyork.png',
-            tags: { bustling: 1, modern: 1, nightlife: 1, diverse: 1, ambitious: 1 }
+            tags: { bustling: 1, lively: 1, nightlife: 1, ambitious: 1 }
           },
           optionB: {
-            label: 'Kars',
-            emoji: '🏔️',
-            gradient: ['#74b9ff', '#dfe6e9'],
-            image: 'assets/kars.png',
-            tags: { peaceful: 1, natural: 1, historical: 1, affordable: 1, cozy: 1 }
+            label: 'Sakin',
+            emoji: '🌿',
+            gradient: ['#11998e', '#38ef7d'],
+            tags: { peaceful: 1, relaxed: 1, cozy: 1 }
           }
         },
         {
           id: 4,
-          text: 'Hangisini tercih edersin?',
+          text: 'İklim tercihin ne olurdu?',
           optionA: {
-            label: 'Londra',
-            emoji: '🎡',
-            gradient: ['#6c5ce7', '#a29bfe'],
-            image: 'assets/london.png',
-            tags: { historical: 1, cultural: 1, diverse: 1, prestigious: 1, european: 1 }
+            label: 'Sıcak İklim',
+            emoji: '☀️',
+            gradient: ['#f9ca24', '#f0932b'],
+            tags: { warm: 1, beach: 1, adventurous: 1 }
           },
           optionB: {
-            label: 'Antalya',
-            emoji: '🏝️',
-            gradient: ['#00cec9', '#55efc4'],
-            image: 'assets/antalya.png',
-            tags: { warm: 1, beach: 1, relaxed: 1, historical: 1, affordable: 1 }
+            label: 'Serin İklim',
+            emoji: '🌧️',
+            gradient: ['#636E72', '#a29bfe'],
+            tags: { european: 1, orderly: 1, historical: 1 }
           }
         },
         {
           id: 5,
-          text: 'Hangisini tercih edersin?',
+          text: 'Şehirde ne önemli?',
           optionA: {
-            label: 'Amsterdam',
-            emoji: '🚲',
-            gradient: ['#e17055', '#fdcb6e'],
-            image: 'assets/amsterdam.png',
-            tags: { relaxed: 1, artistic: 1, free: 1, european: 1, cozy: 1 }
+            label: 'Kültür & Tarih',
+            emoji: '🏛️',
+            gradient: ['#6c5ce7', '#a29bfe'],
+            tags: { historical: 1, cultural: 1, prestigious: 1 }
           },
           optionB: {
-            label: 'Dubai',
-            emoji: '🌇',
-            gradient: ['#f9ca24', '#f0932b'],
-            image: 'assets/dubai.png',
-            tags: { luxurious: 1, modern: 1, adventurous: 1, warm: 1, ambitious: 1 }
+            label: 'Teknoloji & Modernlik',
+            emoji: '🤖',
+            gradient: ['#6a11cb', '#2575fc'],
+            tags: { modern: 1, techy: 1, luxurious: 1 }
           }
         },
         {
           id: 6,
-          text: 'Hangisini tercih edersin?',
+          text: 'Yaşam maliyeti tercihin?',
           optionA: {
-            label: 'İstanbul',
-            emoji: '🕌',
-            gradient: ['#FF6B35', '#F7C59F'],
-            image: 'assets/istanbul.png',
-            tags: { bustling: 1, historical: 1, cultural: 1, foodie: 1, lively: 1 }
+            label: 'Uygun Fiyatlı',
+            emoji: '💰',
+            gradient: ['#43e97b', '#38f9d7'],
+            tags: { affordable: 1, domestic: 1, cozy: 1 }
           },
           optionB: {
-            label: 'Tokyo',
-            emoji: '🗼',
-            gradient: ['#FF69B4', '#7B68EE'],
-            image: 'assets/tokyo.png',
-            tags: { modern: 1, techy: 1, orderly: 1, foodie: 1, exotic: 1 }
+            label: 'Lüks Yaşam',
+            emoji: '💎',
+            gradient: ['#8e2de2', '#4a00e0'],
+            tags: { luxurious: 1, ambitious: 1, prestigious: 1 }
           }
         },
         {
           id: 7,
-          text: 'Hangisini tercih edersin?',
+          text: 'Sosyal hayatın nasıl olsun?',
           optionA: {
-            label: 'Barcelona',
-            emoji: '🏖️',
-            gradient: ['#FFD166', '#FF6B6B'],
-            image: 'assets/barcelona.png',
-            tags: { warm: 1, beach: 1, social: 1, artistic: 1, european: 1 }
+            label: 'Gece Hayatı',
+            emoji: '🎉',
+            gradient: ['#f093fb', '#f5576c'],
+            tags: { nightlife: 1, lively: 1, social: 1, alternative: 1 }
           },
           optionB: {
-            label: 'New York',
-            emoji: '🗽',
-            gradient: ['#4834d4', '#686de0'],
-            image: 'assets/newyork.png',
-            tags: { bustling: 1, modern: 1, nightlife: 1, diverse: 1, ambitious: 1 }
+            label: 'Huzurlu Akşamlar',
+            emoji: '🌅',
+            gradient: ['#ffecd2', '#fcb69f'],
+            tags: { relaxed: 1, peaceful: 1, foodie: 1 }
           }
         },
         {
           id: 8,
-          text: 'Hangisini tercih edersin?',
+          text: 'Sanata ve estetiğe ne kadar önem verirsin?',
           optionA: {
-            label: 'Kars',
-            emoji: '🏔️',
-            gradient: ['#74b9ff', '#dfe6e9'],
-            image: 'assets/kars.png',
-            tags: { peaceful: 1, natural: 1, historical: 1, affordable: 1, cozy: 1 }
+            label: 'Sanat Şehri',
+            emoji: '🎨',
+            gradient: ['#e17055', '#fdcb6e'],
+            tags: { artistic: 1, free: 1, alternative: 1, cultural: 1 }
           },
           optionB: {
-            label: 'Amsterdam',
-            emoji: '🚲',
-            gradient: ['#e17055', '#fdcb6e'],
-            image: 'assets/amsterdam.png',
-            tags: { relaxed: 1, artistic: 1, free: 1, european: 1, cozy: 1 }
+            label: 'İş Dünyası',
+            emoji: '📈',
+            gradient: ['#2c3e50', '#3498db'],
+            tags: { ambitious: 1, bustling: 1, modern: 1, diverse: 1 }
           }
         },
         {
           id: 9,
-          text: 'Hangisini tercih edersin?',
+          text: 'Farklı kültürlere açık mısın?',
           optionA: {
-            label: 'Dubai',
-            emoji: '🌇',
-            gradient: ['#f9ca24', '#f0932b'],
-            image: 'assets/dubai.png',
-            tags: { luxurious: 1, modern: 1, adventurous: 1, warm: 1, ambitious: 1 }
+            label: 'Kozmopolit',
+            emoji: '🌐',
+            gradient: ['#FF6B35', '#F7C59F'],
+            tags: { diverse: 1, international: 1, exotic: 1, social: 1 }
           },
           optionB: {
-            label: 'Londra',
-            emoji: '🎡',
-            gradient: ['#6c5ce7', '#a29bfe'],
-            image: 'assets/london.png',
-            tags: { historical: 1, cultural: 1, diverse: 1, prestigious: 1, european: 1 }
+            label: 'Yerel Kültür',
+            emoji: '🏠',
+            gradient: ['#00cec9', '#55efc4'],
+            tags: { domestic: 1, cultural: 1, historical: 1, foodie: 1 }
           }
         },
         {
           id: 10,
-          text: 'Hangisini tercih edersin?',
+          text: 'Doğa mı şehir mı?',
           optionA: {
-            label: 'Berlin',
-            emoji: '🎸',
-            gradient: ['#636E72', '#FD79A8'],
-            image: 'assets/berlin.png',
-            tags: { artistic: 1, nightlife: 1, alternative: 1, affordable: 1, modern: 1 }
+            label: 'Doğanın İçinde',
+            emoji: '🌳',
+            gradient: ['#11998e', '#38ef7d'],
+            tags: { natural: 1, peaceful: 1, relaxed: 1, cozy: 1 }
           },
           optionB: {
-            label: 'Antalya',
-            emoji: '🏝️',
-            gradient: ['#00cec9', '#55efc4'],
-            image: 'assets/antalya.png',
-            tags: { warm: 1, beach: 1, relaxed: 1, historical: 1, affordable: 1 }
+            label: 'Şehrin Kalbinde',
+            emoji: '🏢',
+            gradient: ['#4834d4', '#686de0'],
+            tags: { bustling: 1, modern: 1, lively: 1, ambitious: 1 }
           }
         }
       ]
@@ -548,182 +528,162 @@ const GAME_DATA = {
       questions: [
         {
           id: 1,
-          text: 'Hangisini tercih edersin?',
+          text: 'Eğitimini nerede almak istersin?',
           optionA: {
-            label: 'MIT',
-            emoji: '🔬',
-            gradient: ['#a31f34', '#8b1a2b'],
-            image: null,
-            tags: { research: 1, techy: 1, innovation: 1, competitive: 1, international: 1 }
+            label: 'Yurt İçi',
+            emoji: '🇹🇷',
+            gradient: ['#E31837', '#FF4757'],
+            tags: { turkey: 1, community: 1 }
           },
           optionB: {
-            label: 'Oxford',
-            emoji: '📚',
-            gradient: ['#002147', '#1a3a5c'],
-            image: null,
-            tags: { tradition: 1, research: 1, prestige: 1, humanities: 1, international: 1 }
+            label: 'Yurt Dışı',
+            emoji: '✈️',
+            gradient: ['#667eea', '#764ba2'],
+            tags: { international: 1, global: 1, european: 1 }
           }
         },
         {
           id: 2,
-          text: 'Hangisini tercih edersin?',
+          text: 'Hangi alan seni daha çok çeker?',
           optionA: {
-            label: 'Stanford',
-            emoji: '☀️',
-            gradient: ['#8C1515', '#B83A4B'],
-            image: null,
-            tags: { innovation: 1, entrepreneurial: 1, campus: 1, techy: 1, research: 1 }
+            label: 'Mühendislik & Fen',
+            emoji: '⚙️',
+            gradient: ['#6a11cb', '#2575fc'],
+            tags: { engineering: 1, techy: 1, research: 1 }
           },
           optionB: {
-            label: 'Hacettepe',
-            emoji: '🦌',
-            gradient: ['#E31837', '#FF4757'],
-            image: null,
-            tags: { research: 1, campus: 1, turkey: 1, medical: 1, community: 1 }
+            label: 'Sosyal & Beşeri',
+            emoji: '📖',
+            gradient: ['#a18cd1', '#fbc2eb'],
+            tags: { humanities: 1, cultural: 1, social: 1 }
           }
         },
         {
           id: 3,
-          text: 'Hangisini tercih edersin?',
+          text: 'Kampüs yaşamı mı şehir içi mi?',
           optionA: {
-            label: 'Cambridge',
-            emoji: '🏛️',
-            gradient: ['#A3C1AD', '#003B2B'],
-            image: null,
-            tags: { tradition: 1, research: 1, prestige: 1, campus: 1, humanities: 1 }
+            label: 'Kampüs Hayatı',
+            emoji: '🏫',
+            gradient: ['#43e97b', '#38f9d7'],
+            tags: { campus: 1, community: 1 }
           },
           optionB: {
-            label: 'Boğaziçi',
-            emoji: '🌊',
-            gradient: ['#003591', '#0047BB'],
-            image: null,
-            tags: { prestige: 1, turkey: 1, urban: 1, international: 1, social: 1 }
+            label: 'Şehir İçi',
+            emoji: '🏙️',
+            gradient: ['#4834d4', '#686de0'],
+            tags: { urban: 1, social: 1, diverse: 1 }
           }
         },
         {
           id: 4,
-          text: 'Hangisini tercih edersin?',
+          text: 'Akademik yaklaşım tercihin?',
           optionA: {
-            label: 'Harvard',
-            emoji: '🏆',
-            gradient: ['#A41034', '#C90016'],
-            image: null,
-            tags: { prestige: 1, competitive: 1, diverse: 1, research: 1, global: 1 }
+            label: 'Araştırma Odaklı',
+            emoji: '🔬',
+            gradient: ['#0f0c29', '#302b63'],
+            tags: { research: 2, innovation: 1 }
           },
           optionB: {
-            label: 'ODTÜ',
-            emoji: '⚙️',
-            gradient: ['#8B0000', '#CC0000'],
-            image: null,
-            tags: { techy: 1, turkey: 1, campus: 1, competitive: 1, engineering: 1 }
+            label: 'Uygulama Odaklı',
+            emoji: '🛠️',
+            gradient: ['#f7971e', '#ffd200'],
+            tags: { engineering: 1, entrepreneurial: 1, techy: 1 }
           }
         },
         {
           id: 5,
-          text: 'Hangisini tercih edersin?',
+          text: 'Rekabetçi ortam mı rahat ortam mı?',
           optionA: {
-            label: 'ETH Zürich',
-            emoji: '🇨🇭',
-            gradient: ['#1D3557', '#457B9D'],
-            image: null,
-            tags: { research: 1, engineering: 1, innovation: 1, european: 1, precision: 1 }
+            label: 'Rekabetçi',
+            emoji: '🏆',
+            gradient: ['#A41034', '#C90016'],
+            tags: { competitive: 2, prestige: 1 }
           },
           optionB: {
-            label: 'Sorbonne',
-            emoji: '🗼',
-            gradient: ['#1B1464', '#3D1C6E'],
-            image: null,
-            tags: { humanities: 1, cultural: 1, european: 1, tradition: 1, urban: 1 }
+            label: 'Destekleyici',
+            emoji: '🤝',
+            gradient: ['#00cec9', '#55efc4'],
+            tags: { community: 1, campus: 1, social: 1 }
           }
         },
         {
           id: 6,
-          text: 'Hangisini tercih edersin?',
+          text: 'Üniversitede ne önemli?',
           optionA: {
-            label: 'MIT',
-            emoji: '🔬',
-            gradient: ['#a31f34', '#8b1a2b'],
-            image: null,
-            tags: { research: 1, techy: 1, innovation: 1, competitive: 1, international: 1 }
+            label: 'Prestij',
+            emoji: '👑',
+            gradient: ['#b8860b', '#daa520'],
+            tags: { prestige: 2, tradition: 1 }
           },
           optionB: {
-            label: 'Stanford',
-            emoji: '☀️',
-            gradient: ['#8C1515', '#B83A4B'],
-            image: null,
-            tags: { innovation: 1, entrepreneurial: 1, campus: 1, techy: 1, research: 1 }
+            label: 'Yenilikçilik',
+            emoji: '💡',
+            gradient: ['#6a11cb', '#2575fc'],
+            tags: { innovation: 2, entrepreneurial: 1 }
           }
         },
         {
           id: 7,
-          text: 'Hangisini tercih edersin?',
+          text: 'Hangi gelenek seni çeker?',
           optionA: {
-            label: 'Oxford',
-            emoji: '📚',
+            label: 'Köklü Gelenek',
+            emoji: '🏛️',
             gradient: ['#002147', '#1a3a5c'],
-            image: null,
-            tags: { tradition: 1, research: 1, prestige: 1, humanities: 1, international: 1 }
+            tags: { tradition: 2, prestige: 1, humanities: 1 }
           },
           optionB: {
-            label: 'Cambridge',
-            emoji: '🏛️',
-            gradient: ['#A3C1AD', '#003B2B'],
-            image: null,
-            tags: { tradition: 1, research: 1, prestige: 1, campus: 1, humanities: 1 }
+            label: 'Modern Yaklaşım',
+            emoji: '🚀',
+            gradient: ['#f093fb', '#f5576c'],
+            tags: { innovation: 1, techy: 1, entrepreneurial: 1 }
           }
         },
         {
           id: 8,
-          text: 'Hangisini tercih edersin?',
+          text: 'Eğitim hedefin ne?',
           optionA: {
-            label: 'Hacettepe',
-            emoji: '🦌',
-            gradient: ['#E31837', '#FF4757'],
-            image: null,
-            tags: { research: 1, campus: 1, turkey: 1, medical: 1, community: 1 }
+            label: 'Akademisyen Olmak',
+            emoji: '📚',
+            gradient: ['#A3C1AD', '#003B2B'],
+            tags: { research: 1, tradition: 1, humanities: 1, precision: 1 }
           },
           optionB: {
-            label: 'ODTÜ',
-            emoji: '⚙️',
-            gradient: ['#8B0000', '#CC0000'],
-            image: null,
-            tags: { techy: 1, turkey: 1, campus: 1, competitive: 1, engineering: 1 }
+            label: 'Sektöre Geçmek',
+            emoji: '💼',
+            gradient: ['#2c3e50', '#3498db'],
+            tags: { engineering: 1, competitive: 1, global: 1 }
           }
         },
         {
           id: 9,
-          text: 'Hangisini tercih edersin?',
+          text: 'Hangi kıta cazip?',
           optionA: {
-            label: 'ETH Zürich',
-            emoji: '🇨🇭',
+            label: 'Avrupa',
+            emoji: '🇪🇺',
             gradient: ['#1D3557', '#457B9D'],
-            image: null,
-            tags: { research: 1, engineering: 1, innovation: 1, european: 1, precision: 1 }
+            tags: { european: 2, precision: 1, cultural: 1 }
           },
           optionB: {
-            label: 'Harvard',
-            emoji: '🏆',
+            label: 'Amerika',
+            emoji: '🇺🇸',
             gradient: ['#A41034', '#C90016'],
-            image: null,
-            tags: { prestige: 1, competitive: 1, diverse: 1, research: 1, global: 1 }
+            tags: { international: 1, competitive: 1, global: 1, innovation: 1 }
           }
         },
         {
           id: 10,
-          text: 'Hangisini tercih edersin?',
+          text: 'Tıp ve sağlık alanı ilgini çeker mi?',
           optionA: {
-            label: 'Boğaziçi',
-            emoji: '🌊',
-            gradient: ['#003591', '#0047BB'],
-            image: null,
-            tags: { prestige: 1, turkey: 1, urban: 1, international: 1, social: 1 }
+            label: 'Evet, Tıp İlgimi Çeker',
+            emoji: '🩺',
+            gradient: ['#11998e', '#38ef7d'],
+            tags: { medical: 1, research: 1, community: 1, turkey: 1 }
           },
           optionB: {
-            label: 'Sorbonne',
-            emoji: '🗼',
-            gradient: ['#1B1464', '#3D1C6E'],
-            image: null,
-            tags: { humanities: 1, cultural: 1, european: 1, tradition: 1, urban: 1 }
+            label: 'Hayır, Farklı Alanlar',
+            emoji: '🔮',
+            gradient: ['#8e2de2', '#4a00e0'],
+            tags: { techy: 1, engineering: 1, innovation: 1 }
           }
         }
       ]

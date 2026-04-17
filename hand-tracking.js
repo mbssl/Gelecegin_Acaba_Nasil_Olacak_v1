@@ -11,15 +11,19 @@ class HandTracker {
     this.lastVideoTime = -1;
 
     /* Callback'ler */
-    this.onHandUpdate = null;   // ({x, y, isOpen, side}) → her frame
+    this.onHandUpdate = null;   // ({x, y, isOpen, side, screenX, screenY}) → her frame
     this.onSelection = null;    // (side: 'left'|'right') → seçim yapıldığında
+    this.onHover = null;        // (screenX, screenY) → her frame, ekran koordinatlarıyla
 
     /* Durum İzleme */
     this.prevOpen = null;       // önceki frame'de el açık mıydı?
     this.cooldown = false;      // seçim sonrası bekleme
     this.fistStartTime = 0;     // yumruk başlangıç zamanı
-    this.MIN_FIST_DURATION = 250; // yumruk en az 250ms sürmeli (ms)
-    this.COOLDOWN_DURATION = 1500; // seçim sonrası bekleme süresi (ms)
+    this.wasFist = false;       // yumruk yapılmış mı (geçiş takibi)
+
+    /* ── HIZLANDIRILMIŞ PARAMETRELER ── */
+    this.MIN_FIST_DURATION = 80;   // yumruk en az 80ms sürmeli (önceden 250ms)
+    this.COOLDOWN_DURATION = 600;   // seçim sonrası bekleme (önceden 1500ms)
 
     /* MediaPipe modül referansları */
     this._HandLandmarker = null;
@@ -114,6 +118,16 @@ class HandTracker {
   }
 
   /**
+   * Elin ekran koordinatlarını döndürür (aynalı hesaplama dahil)
+   */
+  getScreenCoords(landmarks) {
+    const wrist = landmarks[0];
+    const screenX = (1 - wrist.x) * window.innerWidth;
+    const screenY = wrist.y * window.innerHeight;
+    return { screenX, screenY };
+  }
+
+  /**
    * Her video frame'inde el algılama çalıştırır.
    */
   detect() {
@@ -132,25 +146,46 @@ class HandTracker {
           const hand = results.landmarks[0];
           const isOpen = this.isHandOpen(hand);
           const side = this.getHandSide(hand);
-          const wrist = hand[0];
+          const { screenX, screenY } = this.getScreenCoords(hand);
 
           /* Her frame için pozisyon güncellemesi gönder */
           if (this.onHandUpdate) {
             this.onHandUpdate({
-              x: wrist.x,
-              y: wrist.y,
+              x: hand[0].x,
+              y: hand[0].y,
               isOpen: isOpen,
               side: side,
+              screenX: screenX,
+              screenY: screenY,
               landmarks: hand
             });
           }
 
-          /* Seçim jest algılama: kapalı → açık geçişi */
-          if (this.prevOpen === false && isOpen && !this.cooldown) {
+          /* Hover callback (ekran koordinatlarıyla) */
+          if (this.onHover) {
+            this.onHover(screenX, screenY, isOpen);
+          }
+
+          /* ── GELİŞTİRİLMİŞ SEÇİM JESTİ ──
+             Mantık: el kapatılır (yumruk) → yeterince süre tutulur → el açılır = SEÇİM
+             Daha hızlı ve güvenilir algılama için:
+             - wasFist flag ile geçiş takibi
+             - MIN_FIST_DURATION düşürüldü (80ms)
+             - Cooldown kısaltıldı (600ms)
+          */
+          if (!isOpen && (this.prevOpen === true || this.prevOpen === null)) {
+            /* El yeni kapandı → yumruk başlangıcını kaydet */
+            this.fistStartTime = now;
+            this.wasFist = true;
+          }
+
+          if (isOpen && this.wasFist && !this.cooldown) {
+            /* El açıldı ve öncesinde yumruk yapılmıştı */
             const fistDuration = now - this.fistStartTime;
             if (fistDuration >= this.MIN_FIST_DURATION) {
-              /* Seçim yapıldı! */
+              /* ✅ Seçim yapıldı! */
               this.cooldown = true;
+              this.wasFist = false;
               if (this.onSelection) {
                 this.onSelection(side);
               }
@@ -160,12 +195,9 @@ class HandTracker {
             }
           }
 
-          /* Yumruk başlangıç zamanını kaydet */
-          if (isOpen && !this.prevOpen !== false) {
-            // el yeni açıldı
-          }
-          if (!isOpen && this.prevOpen !== false) {
-            this.fistStartTime = now;
+          /* El açık kaldığı sürece wasFist'i sıfırla (uzun süreli açık el) */
+          if (isOpen && this.prevOpen === true) {
+            this.wasFist = false;
           }
 
           this.prevOpen = isOpen;
@@ -175,6 +207,7 @@ class HandTracker {
             this.onHandUpdate(null);
           }
           this.prevOpen = null;
+          this.wasFist = false;
         }
       } catch (e) {
         /* Zaman zaman frame atlayabilir */
@@ -189,6 +222,7 @@ class HandTracker {
     this.running = true;
     this.prevOpen = null;
     this.cooldown = false;
+    this.wasFist = false;
     this.detect();
     console.log('🖐️ El takibi başladı');
   }
