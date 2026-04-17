@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G.A.N.O? — Geleceğin Acaba Nasıl Olacak?</title>
+  <meta name="description" content="Hacettepe Üniversitesi Yapay Zeka Topluluğu — El hareketleriyle geleceğini keşfet! Meslek, şirket, şehir ve üniversite tahmin oyunu." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ─── Parçacık Arkaplan ─── -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- ─── El İmleci Overlay ─── -->
+  <div id="hand-cursor" class="hand-cursor"></div>
+
+  <!-- ─── Kamera Aynası ─── -->
+  <div id="camera-mirror" class="camera-mirror hidden">
+    <video id="camera-video" autoplay playsinline muted></video>
+    <div id="hand-status" class="hand-status"></div>
+    <span class="camera-label">Kamera</span>
+  </div>
+
+  <!-- ─── Giriş Modu Göstergesi ─── -->
+  <div id="input-mode-badge" class="input-mode-badge" style="opacity:0;">
+    🖱️ Mouse Modu
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       EKRAN 1 — KARŞILAMA
+       ═══════════════════════════════════════════════════════ -->
+  <div id="screen-welcome" class="screen welcome-screen active">
+    <div class="logo-container">
+      <!-- Hacettepe AI Club Logo SVG -->
+      <svg class="logo-img" viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" fill="none">
+          <!-- Sol boynuz -->
+          <path d="M50 85 Q45 70 35 58 Q28 48 18 42"/>
+          <path d="M50 85 Q44 68 32 55 Q24 46 14 40"/>
+          <path d="M35 58 Q28 52 20 52"/>
+          <path d="M32 55 Q24 50 16 50"/>
+          <path d="M35 58 Q32 46 25 38"/>
+          <path d="M32 55 Q28 44 22 36"/>
+          <!-- Sağ boynuz -->
+          <path d="M50 85 Q55 70 65 58 Q72 48 82 42"/>
+          <path d="M50 85 Q56 68 68 55 Q76 46 86 40"/>
+          <path d="M65 58 Q72 52 80 52"/>
+          <path d="M68 55 Q76 50 84 50"/>
+          <path d="M65 58 Q68 46 75 38"/>
+          <path d="M68 55 Q72 44 78 36"/>
+          <!-- Kafa -->
+          <path d="M50 85 L50 100" stroke-width="2.5"/>
+          <circle cx="44" cy="90" r="1.5" fill="#ffffff"/>
+          <circle cx="56" cy="90" r="1.5" fill="#ffffff"/>
+        </g>
+      </svg>
+      <span class="logo-text">Hacettepe Üniversitesi<br/>Yapay Zeka Topluluğu</span>
+    </div>
+
+    <h1 class="game-title">G.A.N.O?</h1>
+    <p class="game-fullname">Geleceğin Acaba Nasıl Olacak?</p>
+    <p class="game-subtitle">El hareketlerinle geleceğini keşfet! Kameranı aç, elini şıkkın üzerine götür ve avucunu aç-kapa yaparak seçimini yap.</p>
+
+    <button id="btn-start" class="btn-start">Başla 🚀</button>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       EKRAN 2 — KATEGORİ SEÇİMİ
+       ═══════════════════════════════════════════════════════ -->
+  <div id="screen-category" class="screen category-screen">
+    <h2 class="category-heading">Hangi kategori için <span>Acaba'lamak</span> istersin?</h2>
+    <div id="category-grid" class="category-grid stagger">
+      <!-- Kartlar JavaScript ile doldurulur -->
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       EKRAN 3 — SORU
+       ═══════════════════════════════════════════════════════ -->
+  <div id="screen-question" class="screen question-screen">
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <span id="progress-label" class="progress-label">Soru 1 / 10</span>
+      <div class="progress-bar-track">
+        <div id="progress-fill" class="progress-bar-fill"></div>
+      </div>
+    </div>
+
+    <!-- Sol Şık -->
+    <div id="option-a" class="option-card" data-side="left">
+      <div class="option-bg"></div>
+      <div class="option-overlay"></div>
+      <span class="option-emoji"></span>
+      <span class="option-label"></span>
+    </div>
+
+    <!-- Orta — Soru Metni -->
+    <div class="question-center">
+      <p id="question-text" class="question-text"></p>
+      <div class="question-hint">
+        <span class="hand-icon">🖐️</span>
+        <span>Elini şıkkın üzerine götür ve avucunu aç-kapa yap</span>
+      </div>
+    </div>
+
+    <!-- Sağ Şık -->
+    <div id="option-b" class="option-card" data-side="right">
+      <div class="option-bg"></div>
+      <div class="option-overlay"></div>
+      <span class="option-emoji"></span>
+      <span class="option-label"></span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       EKRAN 4 — ANALİZ / YÜKLENİYOR
+       ═══════════════════════════════════════════════════════ -->
+  <div id="screen-loading" class="screen loading-screen">
+    <div class="dna-loader">
+      <span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+    </div>
+    <p class="loading-text">Seçimlerin analiz ediliyor...</p>
+    <p class="loading-subtext">Yapay zeka senin karakterini çözümlüyor 🧬</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       EKRAN 5 — SONUÇ
+       ═══════════════════════════════════════════════════════ -->
+  <div id="screen-result" class="screen result-screen">
+    <span class="result-label" id="result-category-label"></span>
+
+    <div class="result-card">
+      <span id="result-emoji" class="result-emoji"></span>
+      <h2 id="result-name" class="result-name"></h2>
+      <ul id="result-reasons" class="result-reasons">
+        <li></li><li></li><li></li>
+      </ul>
+    </div>
+
+    <button id="btn-replay" class="btn-replay">Tekrar Oyna 🔄</button>
+  </div>
+
+  <!-- ─── Scriptler ─── -->
+  <script src="questions.js"></script>
+  <script src="prediction-engine.js"></script>
+  <script src="hand-tracking.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
