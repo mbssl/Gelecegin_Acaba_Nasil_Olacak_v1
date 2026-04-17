@@ -238,7 +238,7 @@ const RESULTS = {
       name: 'İstanbul',
       emoji: '🕌',
       gradient: ['#FF6B35', '#F7C59F'],
-      profile: { bustling: 2, historical: 2, cultural: 2, foodie: 2, lively: 2, warm: 1, social: 1 },
+      profile: { domestic: 2, bustling: 2, historical: 2, cultural: 2, foodie: 2, lively: 2, warm: 1, social: 1, ambitious: 1 },
       reasons: [
         'Kalabalığı ve enerjisi seni büyüleyen İstanbul, tarih ve modernliğin buluştuğu yerde seni bekliyor.',
         'Zengin mutfak kültürüne olan tutkunun ve büyük şehir yaşamı tercihin İstanbul\'u senin şehrin yapıyor.',
@@ -249,7 +249,7 @@ const RESULTS = {
       name: 'Barcelona',
       emoji: '🏖️',
       gradient: ['#FFD166', '#FF6B6B'],
-      profile: { warm: 2, beach: 2, social: 2, artistic: 2, european: 2, lively: 1, cultural: 1 },
+      profile: { international: 1, warm: 2, beach: 2, social: 2, artistic: 2, european: 2, lively: 1, cultural: 1, relaxed: 1 },
       reasons: [
         'Sıcak iklim ve deniz tutkun Barcelona\'nın Akdeniz ruhunu yaşaman için biçilmiş kaftan.',
         'Sosyal yapın ve eğlenceye olan düşkünlüğün La Rambla\'da harika bir hayat vadediyor.',
@@ -260,7 +260,7 @@ const RESULTS = {
       name: 'Tokyo',
       emoji: '🗼',
       gradient: ['#FF69B4', '#7B68EE'],
-      profile: { modern: 2, techy: 2, orderly: 2, foodie: 2, exotic: 2, bustling: 1 },
+      profile: { international: 2, modern: 2, techy: 2, orderly: 2, foodie: 2, exotic: 2, bustling: 1 },
       reasons: [
         'Teknolojiye olan tutkunun ve düzenli yaşam tercihin Tokyo\'nun mükemmel organizasyonuyla örtüşüyor.',
         'Egzotik kültürlere olan merakın ve yemek tutkun Japon mutfağının başkentinde seni bekliyor.',
@@ -271,7 +271,7 @@ const RESULTS = {
       name: 'New York',
       emoji: '🗽',
       gradient: ['#4834d4', '#686de0'],
-      profile: { bustling: 2, modern: 2, nightlife: 2, diverse: 2, ambitious: 2, lively: 1 },
+      profile: { international: 2, bustling: 2, modern: 2, nightlife: 2, diverse: 2, ambitious: 2, lively: 1 },
       reasons: [
         'Büyük şehir enerjisi ve gece hayatı tutkun Büyük Elma\'da kendini bulacak.',
         'Çeşitliliğe verdiğin değer ve hırsın Manhattan gökdelenlerinde kariyer yapacak.',
@@ -282,7 +282,7 @@ const RESULTS = {
       name: 'Londra',
       emoji: '🎡',
       gradient: ['#6c5ce7', '#a29bfe'],
-      profile: { historical: 2, cultural: 2, diverse: 2, prestigious: 2, european: 1, bustling: 1 },
+      profile: { international: 1, european: 2, historical: 2, cultural: 2, diverse: 2, prestigious: 2, bustling: 1 },
       reasons: [
         'Tarihe olan saygın ve kültürel derinliğin Thames Nehri kıyısında huzur bulacak.',
         'Büyük şehir yaşamı tercihin ve çeşitliliğe olan açıklığın Londra\'yı yuvana dönüştürüyor.',
@@ -293,7 +293,7 @@ const RESULTS = {
       name: 'Amsterdam',
       emoji: '🚲',
       gradient: ['#e17055', '#fdcb6e'],
-      profile: { relaxed: 2, artistic: 2, free: 2, european: 2, cozy: 2 },
+      profile: { international: 1, european: 2, relaxed: 2, artistic: 2, free: 2, cozy: 2, alternative: 1, peaceful: 1 },
       reasons: [
         'Özgürlüğe olan tutkunun ve rahat yaşam tarzın Amsterdam\'ın kanalları boyunca seni bekliyor.',
         'Sanata ve kültüre verdiğin değer Van Gogh\'un şehrinde keşifler yapmanı sağlayacak.',
@@ -304,7 +304,7 @@ const RESULTS = {
       name: 'Dubai',
       emoji: '🌇',
       gradient: ['#f9ca24', '#f0932b'],
-      profile: { luxurious: 2, modern: 2, adventurous: 2, warm: 2, ambitious: 2, exotic: 1 },
+      profile: { international: 2, luxurious: 2, modern: 2, adventurous: 2, warm: 2, ambitious: 2, exotic: 1 },
       reasons: [
         'Lükse olan düşkünlüğün ve modern yaşam tutkun Dubai\'nin gösterişli dünyasında parlayacak.',
         'Macera ruhun ve sıcak iklim tercihin çölün ortasındaki bu oazda seni evinde hissettirecek.',
@@ -315,7 +315,7 @@ const RESULTS = {
       name: 'Berlin',
       emoji: '🎸',
       gradient: ['#636E72', '#FD79A8'],
-      profile: { artistic: 2, nightlife: 2, alternative: 2, affordable: 2, modern: 1, lively: 1 },
+      profile: { international: 1, european: 1, artistic: 2, nightlife: 2, alternative: 2, affordable: 2, modern: 1, free: 1, lively: 1 },
       reasons: [
         'Alternatif ruhun ve sanat tutkun Berlin\'in yaratıcı atmosferinde çiçek açacak.',
         'Gece hayatı sevgin ve uygun fiyatlı yaşam tercihin Berlin\'in dinamik semtlerinde seni bekliyor.',
@@ -326,7 +326,7 @@ const RESULTS = {
       name: 'Kars',
       emoji: '🏔️',
       gradient: ['#74b9ff', '#dfe6e9'],
-      profile: { peaceful: 2, natural: 2, historical: 1, affordable: 2, cozy: 2 },
+      profile: { domestic: 2, peaceful: 2, natural: 2, historical: 1, affordable: 2, cozy: 2 },
       reasons: [
         'Doğa tutkun ve huzur arayışın Kars\'ın bembeyaz ovalarında karşılığını bulacak.',
         'Sakin yaşam tercihin ve tarihe olan ilgin Ani Harabeleri\'nin gölgesinde mutlu edecek.',
@@ -337,7 +337,7 @@ const RESULTS = {
       name: 'Antalya',
       emoji: '🏝️',
       gradient: ['#00cec9', '#55efc4'],
-      profile: { warm: 2, beach: 2, relaxed: 2, historical: 1, affordable: 2 },
+      profile: { domestic: 2, warm: 2, beach: 2, relaxed: 2, historical: 1, affordable: 2 },
       reasons: [
         'Deniz ve güneş tutkun Antalya\'nın turkuaz kıyılarında seni bekliyor.',
         'Rahat yaşam tarzın ve sıcak iklim tercihin Akdeniz\'in incisiyle mükemmel uyum sağlıyor.',

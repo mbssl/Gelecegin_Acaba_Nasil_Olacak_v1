@@ -275,6 +275,19 @@ html, body {
   z-index: 1;
 }
 
+/* El takibi ile kategori kartı hover/fist */
+.category-card.hand-hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: var(--accent-teal);
+  box-shadow: 0 0 40px rgba(65, 160, 177, 0.35);
+}
+
+.category-card.hand-fist {
+  transform: translateY(-2px) scale(1.05);
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 50px rgba(123, 45, 255, 0.5);
+}
+
 /* ═══════════════════════════════════════════
    EKRAN 3 — SORU
    ═══════════════════════════════════════════ */

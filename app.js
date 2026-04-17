@@ -49,6 +49,13 @@ class GameController {
     this.cameraStream = null;
     this.useHandTracking = false;
     this.isSelecting = false; // prevent double selection
+
+    /* ── El ile Kategori Seçimi ── */
+    this.hoveredCategoryCard = null;     // şu an hover edilen kart DOM elementi
+    this.hoveredCategoryId = null;       // şu an hover edilen kategori ID'si
+    this.categoryFistStartTime = 0;     // kategori üzerinde yumruk başlangıcı
+    this.categoryWasFist = false;       // kategori için yumruk yapılmış mı
+    this.categoryCooldown = false;
   }
 
   /* ═══════════════════════════════════════════
@@ -103,7 +110,7 @@ class GameController {
       if (htOK) {
         this.useHandTracking = true;
         this.handTracker.onHandUpdate = (data) => this.onHandUpdate(data);
-        this.handTracker.onSelection = (side) => this.selectOption(side);
+        this.handTracker.onSelection = (side) => this.onHandSelection(side);
         this.handTracker.start();
         this.el.inputModeBadge.textContent = '🖐️ El Takibi Aktif';
       } else {
@@ -150,18 +157,15 @@ class GameController {
     for (const cat of GAME_DATA.categories) {
       const card = document.createElement('div');
       card.className = 'category-card fade-in-scale';
-      card.style.setProperty('--cat-color-1', cat.gradient[0]);
-      card.style.setProperty('--cat-color-2', cat.gradient[1]);
+      card.dataset.categoryId = cat.id;
       card.innerHTML = `
         <span class="category-icon">${cat.icon}</span>
         <h3 class="category-title">${cat.title}</h3>
         <p class="category-subtitle">${cat.subtitle}</p>
       `;
-      card.style.cssText += `--cat-gradient: linear-gradient(135deg, ${cat.gradient[0]}, ${cat.gradient[1]});`;
-      card.querySelector('.category-card, .category-icon')  // apply gradient glow on hover
-      card.addEventListener('click', () => this.onCategorySelect(cat.id));
       /* Glassmorphism gradient overlay */
-      card.firstElementChild && (card.style.background = `linear-gradient(135deg, ${cat.gradient[0]}15, ${cat.gradient[1]}15), var(--bg-card)`);
+      card.style.background = `linear-gradient(135deg, ${cat.gradient[0]}15, ${cat.gradient[1]}15), var(--bg-card)`;
+      card.addEventListener('click', () => this.onCategorySelect(cat.id));
       this.el.categoryGrid.appendChild(card);
     }
   }
@@ -170,11 +174,18 @@ class GameController {
      KATEGORİ SEÇİMİ
      ═══════════════════════════════════════════ */
   onCategorySelect(categoryId) {
+    if (this.categoryCooldown) return;
+    this.categoryCooldown = true;
+
     this.selectedCategory = categoryId;
     this.currentQuestionIndex = 0;
     this.userTags = {};
     this.showQuestion();
     this.showScreen('question');
+
+    setTimeout(() => {
+      this.categoryCooldown = false;
+    }, 600);
   }
 
   /* ═══════════════════════════════════════════
@@ -242,6 +253,20 @@ class GameController {
   }
 
   /* ═══════════════════════════════════════════
+     EL İLE SEÇİM YAPILDĞINDA
+     ═══════════════════════════════════════════ */
+  onHandSelection(side) {
+    if (this.currentScreen === 'question') {
+      this.selectOption(side);
+    } else if (this.currentScreen === 'category') {
+      /* Kategori ekranında: el imlecinin üzerinde olduğu kartı seç */
+      if (this.hoveredCategoryId) {
+        this.onCategorySelect(this.hoveredCategoryId);
+      }
+    }
+  }
+
+  /* ═══════════════════════════════════════════
      ŞIKK SEÇİMİ
      ═══════════════════════════════════════════ */
   selectOption(side) {
@@ -272,7 +297,7 @@ class GameController {
       } else {
         this.showQuestion();
       }
-    }, 800);
+    }, 600);
   }
 
   /* ═══════════════════════════════════════════
@@ -355,6 +380,7 @@ class GameController {
       statusDot.classList.remove('detected');
       this.el.optionA.classList.remove('hand-hover', 'hand-fist');
       this.el.optionB.classList.remove('hand-hover', 'hand-fist');
+      this.clearCategoryHover();
       return;
     }
 
@@ -363,8 +389,8 @@ class GameController {
     cursor.classList.add('visible');
 
     /* İmleci pozisyonla (kamera aynalı, x terslenmiş) */
-    const screenX = (1 - data.x) * window.innerWidth;
-    const screenY = data.y * window.innerHeight;
+    const screenX = data.screenX;
+    const screenY = data.screenY;
     cursor.style.left = `${screenX}px`;
     cursor.style.top = `${screenY}px`;
 
@@ -375,7 +401,12 @@ class GameController {
       cursor.classList.add('fist');
     }
 
-    /* Soru ekranındaysa şık kartlarını vurgula */
+    /* ── KATEGORİ EKRANINDA EL TAKİBİ ── */
+    if (this.currentScreen === 'category') {
+      this.handleCategoryHandTracking(screenX, screenY, data.isOpen);
+    }
+
+    /* ── SORU EKRANINDA EL TAKİBİ ── */
     if (this.currentScreen === 'question' && !this.isSelecting) {
       const aHover = data.side === 'left';
       const bHover = data.side === 'right';
@@ -392,6 +423,55 @@ class GameController {
         this.el.optionB.classList.remove('hand-hover', 'hand-fist');
       }
     }
+  }
+
+  /* ═══════════════════════════════════════════
+     KATEGORİ EKRANINDA EL İLE HOVER + SEÇİM
+     ═══════════════════════════════════════════ */
+  handleCategoryHandTracking(screenX, screenY, isOpen) {
+    const cards = this.el.categoryGrid.querySelectorAll('.category-card');
+    let foundCard = null;
+    let foundId = null;
+
+    /* Hangi kartın üzerindeyiz? */
+    for (const card of cards) {
+      const rect = card.getBoundingClientRect();
+      if (
+        screenX >= rect.left && screenX <= rect.right &&
+        screenY >= rect.top && screenY <= rect.bottom
+      ) {
+        foundCard = card;
+        foundId = card.dataset.categoryId;
+        break;
+      }
+    }
+
+    /* Tüm kartların hover'ını temizle */
+    for (const card of cards) {
+      card.classList.remove('hand-hover', 'hand-fist');
+    }
+
+    if (foundCard) {
+      if (isOpen) {
+        foundCard.classList.add('hand-hover');
+      } else {
+        foundCard.classList.add('hand-fist');
+      }
+      this.hoveredCategoryCard = foundCard;
+      this.hoveredCategoryId = foundId;
+    } else {
+      this.hoveredCategoryCard = null;
+      this.hoveredCategoryId = null;
+    }
+  }
+
+  clearCategoryHover() {
+    const cards = this.el.categoryGrid.querySelectorAll('.category-card');
+    for (const card of cards) {
+      card.classList.remove('hand-hover', 'hand-fist');
+    }
+    this.hoveredCategoryCard = null;
+    this.hoveredCategoryId = null;
   }
 
   /* ═══════════════════════════════════════════
