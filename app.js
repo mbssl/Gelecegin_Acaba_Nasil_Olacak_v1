@@ -1,6 +1,6 @@
 /* ============================================================
-   G.A.N.O? — Ana Uygulama Kontrolcüsü
-   Ekran yönetimi, kamera, el takibi, soru akışı
+   G.A.N.O? — Ana Uygulama Kontrolcüsü v2
+   Dallanmalı soru akışı, güven kontrolü, dinamik soru sayısı
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -37,25 +37,28 @@ class GameController {
       resultCategoryLabel: document.getElementById('result-category-label'),
       resultEmoji: document.getElementById('result-emoji'),
       resultName: document.getElementById('result-name'),
-      resultReasons: document.getElementById('result-reasons')
+      resultReasons: document.getElementById('result-reasons'),
+      resultLogo: document.getElementById('result-logo')
     };
 
     /* ── Oyun Durumu ── */
     this.currentScreen = 'welcome';
     this.selectedCategory = null;
-    this.currentQuestionIndex = 0;
     this.userTags = {};
+    this.activeFilters = {};       // eliminasyon filtreleri { region: 'domestic', continent: 'europe' }
+    this.askedQuestionIds = [];    // sorulmuş soru ID'leri
+    this.questionCount = 0;        // kaç soru soruldu
+    this.currentQuestion = null;   // şu an gösterilen soru
     this.handTracker = null;
     this.cameraStream = null;
     this.useHandTracking = false;
-    this.isSelecting = false; // prevent double selection
+    this.isSelecting = false;
 
     /* ── El ile Kategori Seçimi ── */
-    this.hoveredCategoryCard = null;     // şu an hover edilen kart DOM elementi
-    this.hoveredCategoryId = null;       // şu an hover edilen kategori ID'si
-    this.categoryFistStartTime = 0;     // kategori üzerinde yumruk başlangıcı
-    this.categoryWasFist = false;       // kategori için yumruk yapılmış mı
+    this.hoveredCategoryCard = null;
+    this.hoveredCategoryId = null;
     this.categoryCooldown = false;
+    this.isHoveringReplay = false;
   }
 
   /* ═══════════════════════════════════════════
@@ -65,20 +68,15 @@ class GameController {
     this.setupParticles();
     this.buildCategoryCards();
     this.bindEvents();
-    console.log('🎮 G.A.N.O? başlatıldı');
+    console.log('🎮 G.A.N.O? v2 başlatıldı');
   }
 
   /* ═══════════════════════════════════════════
      EVENT BINDING
      ═══════════════════════════════════════════ */
   bindEvents() {
-    /* Başla butonu */
     this.el.btnStart.addEventListener('click', () => this.onStartClick());
-
-    /* Tekrar Oyna butonu */
     this.el.btnReplay.addEventListener('click', () => this.resetGame());
-
-    /* Şık kartlarına tıklama (fallback) */
     this.el.optionA.addEventListener('click', () => this.selectOption('left'));
     this.el.optionB.addEventListener('click', () => this.selectOption('right'));
   }
@@ -87,11 +85,9 @@ class GameController {
      EKRAN GEÇİŞLERİ
      ═══════════════════════════════════════════ */
   showScreen(name) {
-    /* Önceki ekranı kapat */
     for (const [key, el] of Object.entries(this.screens)) {
       el.classList.remove('active');
     }
-    /* Yeni ekranı göster */
     this.screens[name].classList.add('active');
     this.currentScreen = name;
   }
@@ -100,11 +96,9 @@ class GameController {
      BAŞLANGIÇ
      ═══════════════════════════════════════════ */
   async onStartClick() {
-    /* Kamerayı başlat */
     const cameraOK = await this.startCamera();
 
     if (cameraOK) {
-      /* El takibini yükle */
       this.handTracker = new HandTracker();
       const htOK = await this.handTracker.init(this.el.cameraVideo);
       if (htOK) {
@@ -137,7 +131,6 @@ class GameController {
         audio: false
       });
       this.el.cameraVideo.srcObject = this.cameraStream;
-      /* Video yüklenene kadar bekle */
       await new Promise((resolve) => {
         this.el.cameraVideo.onloadeddata = resolve;
       });
@@ -163,7 +156,6 @@ class GameController {
         <h3 class="category-title">${cat.title}</h3>
         <p class="category-subtitle">${cat.subtitle}</p>
       `;
-      /* Glassmorphism gradient overlay */
       card.style.background = `linear-gradient(135deg, ${cat.gradient[0]}15, ${cat.gradient[1]}15), var(--bg-card)`;
       card.addEventListener('click', () => this.onCategorySelect(cat.id));
       this.el.categoryGrid.appendChild(card);
@@ -178,9 +170,13 @@ class GameController {
     this.categoryCooldown = true;
 
     this.selectedCategory = categoryId;
-    this.currentQuestionIndex = 0;
     this.userTags = {};
-    this.showQuestion();
+    this.activeFilters = {};
+    this.askedQuestionIds = [];
+    this.questionCount = 0;
+    this.currentQuestion = null;
+
+    this.showNextQuestion();
     this.showScreen('question');
 
     setTimeout(() => {
@@ -189,26 +185,63 @@ class GameController {
   }
 
   /* ═══════════════════════════════════════════
+     DALlanmalı SORU SEÇİM ALGORİTMASI
+     Faz sıralamasıyla en uygun soruyu seçer
+     ═══════════════════════════════════════════ */
+  getNextQuestion() {
+    const cat = GAME_DATA.categories.find(c => c.id === this.selectedCategory);
+    if (!cat) return null;
+
+    /* Sorulmamış ve koşulu sağlayan soruları filtrele */
+    const available = cat.questions.filter(q => {
+      if (this.askedQuestionIds.includes(q.id)) return false;
+      try {
+        return q.condition(this.userTags, this.activeFilters);
+      } catch (e) {
+        return false;
+      }
+    });
+
+    if (available.length === 0) return null;
+
+    /* Faz sıralaması: 1 → 2 → 3 */
+    available.sort((a, b) => a.phase - b.phase);
+
+    /* Aynı fazdaki soruları karıştır (randomize) */
+    const topPhase = available[0].phase;
+    const samePhase = available.filter(q => q.phase === topPhase);
+    const randomIndex = Math.floor(Math.random() * samePhase.length);
+
+    return samePhase[randomIndex];
+  }
+
+  /* ═══════════════════════════════════════════
      SORU GÖSTERİMİ
      ═══════════════════════════════════════════ */
-  showQuestion() {
-    const cat = GAME_DATA.categories.find(c => c.id === this.selectedCategory);
-    if (!cat) return;
+  showNextQuestion() {
+    const nextQ = this.getNextQuestion();
+    if (!nextQ) {
+      /* Soru kalmadı → analiz */
+      this.finishQuestions();
+      return;
+    }
 
-    const q = cat.questions[this.currentQuestionIndex];
-    if (!q) return;
+    this.currentQuestion = nextQ;
+    this.askedQuestionIds.push(nextQ.id);
 
     /* Soru metni */
-    this.el.questionText.textContent = q.text;
+    this.el.questionText.textContent = nextQ.text;
 
-    /* Progress */
-    const num = this.currentQuestionIndex + 1;
-    this.el.progressLabel.textContent = `Soru ${num} / 10`;
-    this.el.progressFill.style.width = `${(num - 1) * 10}%`;
+    /* Progress — dinamik gösterim */
+    const num = this.questionCount + 1;
+    this.el.progressLabel.textContent = `Soru ${num}`;
+    /* Progress bar: minimum 8, max 15 arası tahmini */
+    const estimatedTotal = Math.max(MIN_QUESTIONS, Math.min(MAX_QUESTIONS, this.questionCount + 5));
+    this.el.progressFill.style.width = `${Math.min((num / estimatedTotal) * 100, 95)}%`;
 
     /* Şıkları doldur */
-    this.renderOption(this.el.optionA, q.optionA);
-    this.renderOption(this.el.optionB, q.optionB);
+    this.renderOption(this.el.optionA, nextQ.optionA);
+    this.renderOption(this.el.optionB, nextQ.optionB);
 
     /* Seçim kilidini aç */
     this.isSelecting = false;
@@ -227,7 +260,6 @@ class GameController {
     if (existingImg) existingImg.remove();
 
     if (option.image) {
-      /* Fotoğraf modu */
       const img = document.createElement('img');
       img.className = 'option-img';
       img.src = option.image;
@@ -242,7 +274,6 @@ class GameController {
       overlay.style.display = '';
       emoji.style.display = 'none';
     } else {
-      /* CSS kart modu */
       bg.style.background = `linear-gradient(135deg, ${option.gradient[0]}, ${option.gradient[1]})`;
       overlay.style.display = 'none';
       emoji.style.display = '';
@@ -253,30 +284,33 @@ class GameController {
   }
 
   /* ═══════════════════════════════════════════
-     EL İLE SEÇİM YAPILDĞINDA
+     EL İLE SEÇİM YAPILDIĞINDA
      ═══════════════════════════════════════════ */
   onHandSelection(side) {
     if (this.currentScreen === 'question') {
       this.selectOption(side);
     } else if (this.currentScreen === 'category') {
-      /* Kategori ekranında: el imlecinin üzerinde olduğu kartı seç */
       if (this.hoveredCategoryId) {
         this.onCategorySelect(this.hoveredCategoryId);
+      }
+    } else if (this.currentScreen === 'result') {
+      /* Tekrar Oyna butonunun üzerindeyse seç */
+      if (this.isHoveringReplay) {
+        this.resetGame();
       }
     }
   }
 
   /* ═══════════════════════════════════════════
-     ŞIKK SEÇİMİ
+     ŞIKK SEÇİMİ — Dallanmalı Akış
      ═══════════════════════════════════════════ */
   selectOption(side) {
     if (this.isSelecting) return;
     if (this.currentScreen !== 'question') return;
+    if (!this.currentQuestion) return;
     this.isSelecting = true;
 
-    const cat = GAME_DATA.categories.find(c => c.id === this.selectedCategory);
-    const q = cat.questions[this.currentQuestionIndex];
-
+    const q = this.currentQuestion;
     const chosenOption = side === 'left' ? q.optionA : q.optionB;
     const chosenCard = side === 'left' ? this.el.optionA : this.el.optionB;
 
@@ -286,31 +320,59 @@ class GameController {
     /* Etiketleri biriktir */
     this.userTags = accumulateTags(this.userTags, chosenOption.tags);
 
-    /* Sonraki soru veya sonuç */
-    setTimeout(() => {
-      this.currentQuestionIndex++;
+    /* Filtreleri uygula (eliminasyon) */
+    if (chosenOption.setFilter) {
+      Object.assign(this.activeFilters, chosenOption.setFilter);
+      console.log('🔍 Filtre güncellendi:', this.activeFilters);
+    }
 
-      if (this.currentQuestionIndex >= 10) {
-        /* Tüm sorular bitti → Analiz */
+    this.questionCount++;
+
+    /* Sonraki adım */
+    setTimeout(() => {
+      /* Güven kontrolü: devam mı sonuç mu? */
+      const shouldContinue = shouldContinueAsking(
+        this.questionCount,
+        this.selectedCategory,
+        this.userTags,
+        this.activeFilters
+      );
+
+      const nextQ = this.getNextQuestion();
+
+      if (!shouldContinue || !nextQ) {
+        /* Yeterli güven sağlandı veya soru kalmadı → analiz */
         this.el.progressFill.style.width = '100%';
-        this.showAnalysis();
+        this.finishQuestions();
       } else {
-        this.showQuestion();
+        this.showNextQuestion();
       }
     }, 600);
   }
 
   /* ═══════════════════════════════════════════
-     ANALİZ (YÜKLENİYOR) EKRANI
+     SORU BİTİŞİ → ANALİZ
      ═══════════════════════════════════════════ */
-  showAnalysis() {
+  finishQuestions() {
     this.showScreen('loading');
 
-    /* 3 saniye analiz animasyonu göster */
+    console.log('📊 Analiz başlıyor...', {
+      category: this.selectedCategory,
+      tags: this.userTags,
+      filters: this.activeFilters,
+      questionsAsked: this.questionCount
+    });
+
     setTimeout(() => {
-      const result = predictResult(this.selectedCategory, this.userTags);
+      const result = predictResult(this.selectedCategory, this.userTags, this.activeFilters);
       if (result) {
         this.showResult(result);
+      } else {
+        /* Fallback: filtre olmadan dene */
+        const fallback = predictResult(this.selectedCategory, this.userTags, {});
+        if (fallback) {
+          this.showResult(fallback);
+        }
       }
     }, 3000);
   }
@@ -319,7 +381,6 @@ class GameController {
      SONUÇ EKRANI
      ═══════════════════════════════════════════ */
   showResult(result) {
-    /* Kategori etiketi */
     const catLabels = {
       meslek: 'Gelecekteki Mesleğin',
       sirket: 'Gelecekte Çalışacağın Şirket',
@@ -328,12 +389,38 @@ class GameController {
     };
     this.el.resultCategoryLabel.textContent = catLabels[this.selectedCategory] || '';
 
+    /* Logo */
+    const logoEl = this.el.resultLogo;
+    if (logoEl) {
+      if (result.logo) {
+        logoEl.src = result.logo;
+        logoEl.alt = result.name + ' logo';
+        logoEl.style.display = 'block';
+        logoEl.onerror = () => { logoEl.style.display = 'none'; };
+      } else {
+        logoEl.style.display = 'none';
+      }
+    }
+
     /* Sonuç bilgileri */
     this.el.resultEmoji.textContent = result.emoji;
     this.el.resultName.textContent = result.name;
 
-    /* Gradient background for result card accent */
+    /* Hero image arka plan */
     const resultCard = document.querySelector('.result-card');
+    const existingHeroImg = resultCard.querySelector('.result-hero-img');
+    if (existingHeroImg) existingHeroImg.remove();
+
+    if (result.image) {
+      const heroImg = document.createElement('img');
+      heroImg.className = 'result-hero-img';
+      heroImg.src = result.image;
+      heroImg.alt = result.name;
+      heroImg.onerror = () => { heroImg.style.display = 'none'; };
+      resultCard.insertBefore(heroImg, resultCard.firstChild);
+    }
+
+    /* Gradient border */
     if (result.gradient) {
       resultCard.style.borderImage = `linear-gradient(135deg, ${result.gradient[0]}, ${result.gradient[1]}) 1`;
       resultCard.style.borderWidth = '2px';
@@ -354,15 +441,25 @@ class GameController {
      ═══════════════════════════════════════════ */
   resetGame() {
     this.selectedCategory = null;
-    this.currentQuestionIndex = 0;
     this.userTags = {};
+    this.activeFilters = {};
+    this.askedQuestionIds = [];
+    this.questionCount = 0;
+    this.currentQuestion = null;
     this.isSelecting = false;
 
-    /* Reset result card border */
     const resultCard = document.querySelector('.result-card');
     resultCard.style.borderImage = '';
     resultCard.style.borderWidth = '';
     resultCard.style.borderStyle = '';
+
+    /* Hero image temizle */
+    const heroImg = resultCard.querySelector('.result-hero-img');
+    if (heroImg) heroImg.remove();
+
+    /* Logo gizle */
+    const logoEl = this.el.resultLogo;
+    if (logoEl) logoEl.style.display = 'none';
 
     this.showScreen('category');
   }
@@ -375,26 +472,23 @@ class GameController {
     const statusDot = this.el.handStatus;
 
     if (!data) {
-      /* El algılanmadı */
       cursor.classList.remove('visible');
       statusDot.classList.remove('detected');
       this.el.optionA.classList.remove('hand-hover', 'hand-fist');
       this.el.optionB.classList.remove('hand-hover', 'hand-fist');
       this.clearCategoryHover();
+      this.clearReplayHover();
       return;
     }
 
-    /* El algılandı */
     statusDot.classList.add('detected');
     cursor.classList.add('visible');
 
-    /* İmleci pozisyonla (kamera aynalı, x terslenmiş) */
     const screenX = data.screenX;
     const screenY = data.screenY;
     cursor.style.left = `${screenX}px`;
     cursor.style.top = `${screenY}px`;
 
-    /* Yumruk/açık durumu */
     if (data.isOpen) {
       cursor.classList.remove('fist');
     } else {
@@ -423,6 +517,11 @@ class GameController {
         this.el.optionB.classList.remove('hand-hover', 'hand-fist');
       }
     }
+
+    /* ── SONUÇ EKRANINDA EL TAKİBİ (Tekrar Oyna butonu) ── */
+    if (this.currentScreen === 'result') {
+      this.handleReplayHandTracking(screenX, screenY, data.isOpen);
+    }
   }
 
   /* ═══════════════════════════════════════════
@@ -433,7 +532,6 @@ class GameController {
     let foundCard = null;
     let foundId = null;
 
-    /* Hangi kartın üzerindeyiz? */
     for (const card of cards) {
       const rect = card.getBoundingClientRect();
       if (
@@ -446,7 +544,6 @@ class GameController {
       }
     }
 
-    /* Tüm kartların hover'ını temizle */
     for (const card of cards) {
       card.classList.remove('hand-hover', 'hand-fist');
     }
@@ -475,6 +572,40 @@ class GameController {
   }
 
   /* ═══════════════════════════════════════════
+     SONUÇ EKRANINDA EL İLE TEKRAR OYNA BUTONU
+     ═══════════════════════════════════════════ */
+  handleReplayHandTracking(screenX, screenY, isOpen) {
+    const btn = this.el.btnReplay;
+    const rect = btn.getBoundingClientRect();
+
+    const isOver = (
+      screenX >= rect.left && screenX <= rect.right &&
+      screenY >= rect.top && screenY <= rect.bottom
+    );
+
+    if (isOver) {
+      this.isHoveringReplay = true;
+      if (isOpen) {
+        btn.classList.add('hand-hover');
+        btn.classList.remove('hand-fist');
+      } else {
+        btn.classList.add('hand-fist');
+        btn.classList.remove('hand-hover');
+      }
+    } else {
+      this.isHoveringReplay = false;
+      btn.classList.remove('hand-hover', 'hand-fist');
+    }
+  }
+
+  clearReplayHover() {
+    this.isHoveringReplay = false;
+    if (this.el.btnReplay) {
+      this.el.btnReplay.classList.remove('hand-hover', 'hand-fist');
+    }
+  }
+
+  /* ═══════════════════════════════════════════
      PARÇACIK ANİMASYONU
      ═══════════════════════════════════════════ */
   setupParticles() {
@@ -490,7 +621,6 @@ class GameController {
     resize();
     window.addEventListener('resize', resize);
 
-    /* Parçacık oluştur */
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       particles.push({
         x: Math.random() * canvas.width,
@@ -510,7 +640,6 @@ class GameController {
         p.x += p.vx;
         p.y += p.vy;
 
-        /* Sınır kontrolü */
         if (p.x < 0) p.x = canvas.width;
         if (p.x > canvas.width) p.x = 0;
         if (p.y < 0) p.y = canvas.height;
@@ -522,7 +651,6 @@ class GameController {
         ctx.fill();
       }
 
-      /* Parçacıklar arası çizgiler (yakın olanlar) */
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;

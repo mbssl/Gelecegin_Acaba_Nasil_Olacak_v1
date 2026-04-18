@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>G.A.N.O? — Geleceğin Acaba Nasıl Olacak?</title>
-  <meta name="description" content="Hacettepe Üniversitesi Yapay Zeka Topluluğu — El hareketleriyle geleceğini keşfet! Meslek, şirket, şehir ve üniversite tahmin oyunu." />
+  <title>G.A.N.O? <br> Geleceğin Acaba Nasıl Olacak?</title>
+  <meta name="description"
+    content="Hacettepe Üniversitesi Yapay Zekâ Topluluğu — El hareketlerinle geleceğini keşfet! Meslek, şirket, şehir ve üniversite tahmin oyunu." />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
   <!-- ─── Parçacık Arkaplan ─── -->
@@ -32,35 +35,16 @@
        ═══════════════════════════════════════════════════════ -->
   <div id="screen-welcome" class="screen welcome-screen active">
     <div class="logo-container">
-      <!-- Hacettepe AI Club Logo SVG -->
-      <svg class="logo-img" viewBox="0 0 100 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" fill="none">
-          <!-- Sol boynuz -->
-          <path d="M50 85 Q45 70 35 58 Q28 48 18 42"/>
-          <path d="M50 85 Q44 68 32 55 Q24 46 14 40"/>
-          <path d="M35 58 Q28 52 20 52"/>
-          <path d="M32 55 Q24 50 16 50"/>
-          <path d="M35 58 Q32 46 25 38"/>
-          <path d="M32 55 Q28 44 22 36"/>
-          <!-- Sağ boynuz -->
-          <path d="M50 85 Q55 70 65 58 Q72 48 82 42"/>
-          <path d="M50 85 Q56 68 68 55 Q76 46 86 40"/>
-          <path d="M65 58 Q72 52 80 52"/>
-          <path d="M68 55 Q76 50 84 50"/>
-          <path d="M65 58 Q68 46 75 38"/>
-          <path d="M68 55 Q72 44 78 36"/>
-          <!-- Kafa -->
-          <path d="M50 85 L50 100" stroke-width="2.5"/>
-          <circle cx="44" cy="90" r="1.5" fill="#ffffff"/>
-          <circle cx="56" cy="90" r="1.5" fill="#ffffff"/>
-        </g>
-      </svg>
-      <span class="logo-text">Hacettepe Üniversitesi<br/>Yapay Zeka Topluluğu</span>
+      <img src="assets/hacettepe-ai-logo.png" class="logo-img" alt="Hacettepe AI Club Logo" />
+      <span class="logo-text">Hacettepe Üniversitesi<br />Yapay Zekâ Topluluğu</span>
     </div>
 
     <h1 class="game-title">G.A.N.O?</h1>
-    <p class="game-fullname">Geleceğin Acaba Nasıl Olacak?</p>
-    <p class="game-subtitle">El hareketlerinle geleceğini keşfet! Kameranı aç, elini şıkkın üzerine götür ve avucunu aç-kapa yaparak seçimini yap.</p>
+    <h2 class="game-fullname">Geleceğin Acaba Nasıl Olacak?</h2>
+    <p class="game-subtitle"><br>El hareketlerin ile geleceğine yön ver!<br><br>Kameranı aç, elini şıkkın üzerine götür
+      <br>ve <br>
+      avucunu aç-kapa yaparak seçimini yap.
+    </p>
 
     <button id="btn-start" class="btn-start">Başla 🚀</button>
   </div>
@@ -69,7 +53,7 @@
        EKRAN 2 — KATEGORİ SEÇİMİ
        ═══════════════════════════════════════════════════════ -->
   <div id="screen-category" class="screen category-screen">
-    <h2 class="category-heading">Hangi kategori için <span>Acaba'lamak</span> istersin?</h2>
+    <h2 class="category-heading">Hangi gelecek için <span>Acaba'lamak</span> istersin?</h2>
     <div id="category-grid" class="category-grid stagger">
       <!-- Kartlar JavaScript ile doldurulur -->
     </div>
@@ -123,7 +107,7 @@
       <span></span><span></span><span></span>
     </div>
     <p class="loading-text">Seçimlerin analiz ediliyor...</p>
-    <p class="loading-subtext">Yapay zeka senin karakterini çözümlüyor 🧬</p>
+    <p class="loading-subtext">Yapay zeka senin geleceğini acaba'lıyor. 🧬</p>
   </div>
 
   <!-- ═══════════════════════════════════════════════════════
@@ -133,14 +117,17 @@
     <span class="result-label" id="result-category-label"></span>
 
     <div class="result-card">
+      <img id="result-logo" class="result-logo" style="display:none;" alt="" />
       <span id="result-emoji" class="result-emoji"></span>
       <h2 id="result-name" class="result-name"></h2>
       <ul id="result-reasons" class="result-reasons">
-        <li></li><li></li><li></li>
+        <li></li>
+        <li></li>
+        <li></li>
       </ul>
     </div>
 
-    <button id="btn-replay" class="btn-replay">Tekrar Oyna 🔄</button>
+    <button id="btn-replay" class="btn-replay">Başka Bir Gelecek İçin Acaba'la 🔄</button>
   </div>
 
   <!-- ─── Scriptler ─── -->
@@ -150,4 +137,5 @@
   <script src="app.js"></script>
 
 </body>
+
 </html>
