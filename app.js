@@ -1,6 +1,7 @@
 /* ============================================================
-   G.A.N.O? — Ana Uygulama Kontrolcüsü v2
-   Dallanmalı soru akışı, güven kontrolü, dinamik soru sayısı
+   G.A.N.O? — Ana Uygulama Kontrolcüsü v3
+   El takibi karşılama ekranından aktif,
+   Havai fişek, dinamik soru akışı, güven kontrolü
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -38,37 +39,74 @@ class GameController {
       resultEmoji: document.getElementById('result-emoji'),
       resultName: document.getElementById('result-name'),
       resultReasons: document.getElementById('result-reasons'),
-      resultLogo: document.getElementById('result-logo')
+      resultLogo: document.getElementById('result-logo'),
+      fireworksCanvas: document.getElementById('fireworks-canvas')
     };
 
     /* ── Oyun Durumu ── */
     this.currentScreen = 'welcome';
     this.selectedCategory = null;
     this.userTags = {};
-    this.activeFilters = {};       // eliminasyon filtreleri { region: 'domestic', continent: 'europe' }
-    this.askedQuestionIds = [];    // sorulmuş soru ID'leri
-    this.questionCount = 0;        // kaç soru soruldu
-    this.currentQuestion = null;   // şu an gösterilen soru
+    this.activeFilters = {};
+    this.askedQuestionIds = [];
+    this.questionCount = 0;
+    this.currentQuestion = null;
     this.handTracker = null;
     this.cameraStream = null;
     this.useHandTracking = false;
     this.isSelecting = false;
 
-    /* ── El ile Kategori Seçimi ── */
+    /* ── El Hover Durumları ── */
     this.hoveredCategoryCard = null;
     this.hoveredCategoryId = null;
     this.categoryCooldown = false;
     this.isHoveringReplay = false;
+    this.isHoveringStart = false;
+
+    /* ── Havai Fişek ── */
+    this.fireworksActive = false;
+    this.fireworksAnimId = null;
   }
 
   /* ═══════════════════════════════════════════
-     INIT
+     INIT — Kamera + El Takibi Hemen Başlar
      ═══════════════════════════════════════════ */
-  init() {
+  async init() {
     this.setupParticles();
     this.buildCategoryCards();
     this.bindEvents();
-    console.log('🎮 G.A.N.O? v2 başlatıldı');
+
+    /* Kamerayı ve el takibini sayfa açılır açılmaz başlat */
+    await this.startCameraAndHandTracking();
+
+    console.log('🎮 G.A.N.O? v3 başlatıldı');
+  }
+
+  /* ═══════════════════════════════════════════
+     KAMERA + EL TAKİBİ BAŞLATMA (Sayfa Açılışında)
+     ═══════════════════════════════════════════ */
+  async startCameraAndHandTracking() {
+    const cameraOK = await this.startCamera();
+
+    if (cameraOK) {
+      this.handTracker = new HandTracker();
+      const htOK = await this.handTracker.init(this.el.cameraVideo);
+      if (htOK) {
+        this.useHandTracking = true;
+        this.handTracker.onHandUpdate = (data) => this.onHandUpdate(data);
+        this.handTracker.onSelection = (side) => this.onHandSelection(side);
+        this.handTracker.start();
+        this.el.inputModeBadge.textContent = '🖐️ El Takibi Aktif';
+      } else {
+        this.useHandTracking = false;
+        this.el.inputModeBadge.textContent = '🖱️ Mouse Modu';
+      }
+      this.el.cameraMirror.classList.remove('hidden');
+    } else {
+      this.useHandTracking = false;
+      this.el.inputModeBadge.textContent = '🖱️ Mouse Modu — Kamera bulunamadı';
+    }
+    this.el.inputModeBadge.style.opacity = '1';
   }
 
   /* ═══════════════════════════════════════════
@@ -93,31 +131,9 @@ class GameController {
   }
 
   /* ═══════════════════════════════════════════
-     BAŞLANGIÇ
+     BAŞLA BUTONUNA TIKLANDIĞINDA
      ═══════════════════════════════════════════ */
-  async onStartClick() {
-    const cameraOK = await this.startCamera();
-
-    if (cameraOK) {
-      this.handTracker = new HandTracker();
-      const htOK = await this.handTracker.init(this.el.cameraVideo);
-      if (htOK) {
-        this.useHandTracking = true;
-        this.handTracker.onHandUpdate = (data) => this.onHandUpdate(data);
-        this.handTracker.onSelection = (side) => this.onHandSelection(side);
-        this.handTracker.start();
-        this.el.inputModeBadge.textContent = '🖐️ El Takibi Aktif';
-      } else {
-        this.useHandTracking = false;
-        this.el.inputModeBadge.textContent = '🖱️ Mouse Modu';
-      }
-      this.el.cameraMirror.classList.remove('hidden');
-    } else {
-      this.useHandTracking = false;
-      this.el.inputModeBadge.textContent = '🖱️ Mouse Modu — Kamera bulunamadı';
-    }
-
-    this.el.inputModeBadge.style.opacity = '1';
+  onStartClick() {
     this.showScreen('category');
   }
 
@@ -185,14 +201,12 @@ class GameController {
   }
 
   /* ═══════════════════════════════════════════
-     DALlanmalı SORU SEÇİM ALGORİTMASI
-     Faz sıralamasıyla en uygun soruyu seçer
+     DALLANMALI SORU SEÇİM ALGORİTMASI
      ═══════════════════════════════════════════ */
   getNextQuestion() {
     const cat = GAME_DATA.categories.find(c => c.id === this.selectedCategory);
     if (!cat) return null;
 
-    /* Sorulmamış ve koşulu sağlayan soruları filtrele */
     const available = cat.questions.filter(q => {
       if (this.askedQuestionIds.includes(q.id)) return false;
       try {
@@ -204,10 +218,9 @@ class GameController {
 
     if (available.length === 0) return null;
 
-    /* Faz sıralaması: 1 → 2 → 3 */
+    /* Faz sıralaması: küçük faz önce */
     available.sort((a, b) => a.phase - b.phase);
 
-    /* Aynı fazdaki soruları karıştır (randomize) */
     const topPhase = available[0].phase;
     const samePhase = available.filter(q => q.phase === topPhase);
     const randomIndex = Math.floor(Math.random() * samePhase.length);
@@ -221,7 +234,6 @@ class GameController {
   showNextQuestion() {
     const nextQ = this.getNextQuestion();
     if (!nextQ) {
-      /* Soru kalmadı → analiz */
       this.finishQuestions();
       return;
     }
@@ -229,13 +241,11 @@ class GameController {
     this.currentQuestion = nextQ;
     this.askedQuestionIds.push(nextQ.id);
 
-    /* Soru metni */
     this.el.questionText.textContent = nextQ.text;
 
     /* Progress — dinamik gösterim */
     const num = this.questionCount + 1;
     this.el.progressLabel.textContent = `Soru ${num}`;
-    /* Progress bar: minimum 8, max 15 arası tahmini */
     const estimatedTotal = Math.max(MIN_QUESTIONS, Math.min(MAX_QUESTIONS, this.questionCount + 5));
     this.el.progressFill.style.width = `${Math.min((num / estimatedTotal) * 100, 95)}%`;
 
@@ -256,7 +266,6 @@ class GameController {
     const overlay = cardEl.querySelector('.option-overlay');
     const existingImg = cardEl.querySelector('.option-img');
 
-    /* Önceki resmi temizle */
     if (existingImg) existingImg.remove();
 
     if (option.image) {
@@ -294,9 +303,12 @@ class GameController {
         this.onCategorySelect(this.hoveredCategoryId);
       }
     } else if (this.currentScreen === 'result') {
-      /* Tekrar Oyna butonunun üzerindeyse seç */
       if (this.isHoveringReplay) {
         this.resetGame();
+      }
+    } else if (this.currentScreen === 'welcome') {
+      if (this.isHoveringStart) {
+        this.onStartClick();
       }
     }
   }
@@ -314,13 +326,10 @@ class GameController {
     const chosenOption = side === 'left' ? q.optionA : q.optionB;
     const chosenCard = side === 'left' ? this.el.optionA : this.el.optionB;
 
-    /* Seçim animasyonu */
     chosenCard.classList.add('selected');
 
-    /* Etiketleri biriktir */
     this.userTags = accumulateTags(this.userTags, chosenOption.tags);
 
-    /* Filtreleri uygula (eliminasyon) */
     if (chosenOption.setFilter) {
       Object.assign(this.activeFilters, chosenOption.setFilter);
       console.log('🔍 Filtre güncellendi:', this.activeFilters);
@@ -328,9 +337,7 @@ class GameController {
 
     this.questionCount++;
 
-    /* Sonraki adım */
     setTimeout(() => {
-      /* Güven kontrolü: devam mı sonuç mu? */
       const shouldContinue = shouldContinueAsking(
         this.questionCount,
         this.selectedCategory,
@@ -341,7 +348,6 @@ class GameController {
       const nextQ = this.getNextQuestion();
 
       if (!shouldContinue || !nextQ) {
-        /* Yeterli güven sağlandı veya soru kalmadı → analiz */
         this.el.progressFill.style.width = '100%';
         this.finishQuestions();
       } else {
@@ -368,7 +374,6 @@ class GameController {
       if (result) {
         this.showResult(result);
       } else {
-        /* Fallback: filtre olmadan dene */
         const fallback = predictResult(this.selectedCategory, this.userTags, {});
         if (fallback) {
           this.showResult(fallback);
@@ -402,11 +407,11 @@ class GameController {
       }
     }
 
-    /* Sonuç bilgileri */
-    this.el.resultEmoji.textContent = result.emoji;
+    /* Emoji gizle, fotoğraf göster */
+    this.el.resultEmoji.style.display = 'none';
     this.el.resultName.textContent = result.name;
 
-    /* Hero image arka plan */
+    /* Hero image */
     const resultCard = document.querySelector('.result-card');
     const existingHeroImg = resultCard.querySelector('.result-hero-img');
     if (existingHeroImg) existingHeroImg.remove();
@@ -416,8 +421,17 @@ class GameController {
       heroImg.className = 'result-hero-img';
       heroImg.src = result.image;
       heroImg.alt = result.name;
-      heroImg.onerror = () => { heroImg.style.display = 'none'; };
+      heroImg.onerror = () => {
+        heroImg.style.display = 'none';
+        /* Emoji'yi fallback olarak göster */
+        this.el.resultEmoji.textContent = result.emoji;
+        this.el.resultEmoji.style.display = '';
+      };
       resultCard.insertBefore(heroImg, resultCard.firstChild);
+    } else {
+      /* Fotoğraf yoksa emoji göster */
+      this.el.resultEmoji.textContent = result.emoji;
+      this.el.resultEmoji.style.display = '';
     }
 
     /* Gradient border */
@@ -434,6 +448,9 @@ class GameController {
     });
 
     this.showScreen('result');
+
+    /* 🎆 Havai fişekleri başlat */
+    this.startFireworks();
   }
 
   /* ═══════════════════════════════════════════
@@ -457,11 +474,186 @@ class GameController {
     const heroImg = resultCard.querySelector('.result-hero-img');
     if (heroImg) heroImg.remove();
 
+    /* Emoji resetle */
+    this.el.resultEmoji.style.display = '';
+
     /* Logo gizle */
     const logoEl = this.el.resultLogo;
     if (logoEl) logoEl.style.display = 'none';
 
+    /* 🎆 Havai fişekleri durdur */
+    this.stopFireworks();
+
     this.showScreen('category');
+  }
+
+  /* ═══════════════════════════════════════════
+     🎆 HAVAİ FİŞEK ANİMASYONU
+     ═══════════════════════════════════════════ */
+  startFireworks() {
+    const canvas = this.el.fireworksCanvas;
+    if (!canvas) return;
+    canvas.style.display = 'block';
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    this.fireworksActive = true;
+
+    const particles = [];
+    const rockets = [];
+    const colors = ['#FF6B6B','#4ECDC4','#45B7D1','#96CEB4','#FFEAA7','#DDA0DD','#F06292','#BA68C8','#64B5F6','#81C784','#FFD54F','#FF8A65'];
+
+    const createExplosion = (x, y) => {
+      const count = 60 + Math.random() * 40;
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      const color2 = colors[Math.floor(Math.random() * colors.length)];
+      for (let i = 0; i < count; i++) {
+        const angle = (Math.PI * 2 / count) * i + (Math.random() - 0.5) * 0.3;
+        const speed = 2 + Math.random() * 4;
+        particles.push({
+          x, y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          life: 1,
+          decay: 0.008 + Math.random() * 0.012,
+          color: Math.random() > 0.5 ? color : color2,
+          size: 2 + Math.random() * 2,
+          trail: []
+        });
+      }
+    };
+
+    const launchRocket = () => {
+      rockets.push({
+        x: Math.random() * canvas.width,
+        y: canvas.height,
+        targetY: canvas.height * 0.1 + Math.random() * canvas.height * 0.35,
+        vy: -6 - Math.random() * 4,
+        exploded: false,
+        trail: []
+      });
+    };
+
+    let lastLaunch = 0;
+
+    const animate = () => {
+      if (!this.fireworksActive) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        canvas.style.display = 'none';
+        return;
+      }
+
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.globalCompositeOperation = 'source-over';
+
+      const now = Date.now();
+      if (now - lastLaunch > 300 + Math.random() * 700) {
+        launchRocket();
+        if (Math.random() > 0.5) launchRocket(); // çift roket
+        lastLaunch = now;
+      }
+
+      /* Roketler */
+      for (let i = rockets.length - 1; i >= 0; i--) {
+        const r = rockets[i];
+        r.trail.push({ x: r.x, y: r.y });
+        if (r.trail.length > 8) r.trail.shift();
+
+        r.y += r.vy;
+        r.x += (Math.random() - 0.5) * 1.5;
+
+        /* İz çiz */
+        for (let t = 0; t < r.trail.length; t++) {
+          const alpha = t / r.trail.length * 0.6;
+          ctx.beginPath();
+          ctx.arc(r.trail[t].x, r.trail[t].y, 2, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255,220,180,${alpha})`;
+          ctx.fill();
+        }
+
+        /* Roket noktası */
+        ctx.beginPath();
+        ctx.arc(r.x, r.y, 3, 0, Math.PI * 2);
+        ctx.fillStyle = '#FFE4B5';
+        ctx.fill();
+
+        if (r.y <= r.targetY) {
+          createExplosion(r.x, r.y);
+          rockets.splice(i, 1);
+        }
+      }
+
+      /* Parçacıklar */
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.trail.push({ x: p.x, y: p.y });
+        if (p.trail.length > 5) p.trail.shift();
+
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.05; // yerçekimi
+        p.vx *= 0.99;
+        p.life -= p.decay;
+
+        /* İz */
+        for (let t = 0; t < p.trail.length; t++) {
+          const alpha = (t / p.trail.length) * p.life * 0.4;
+          ctx.beginPath();
+          ctx.arc(p.trail[t].x, p.trail[t].y, p.size * 0.5, 0, Math.PI * 2);
+          ctx.fillStyle = p.color.replace(')', `,${alpha})`).replace('rgb', 'rgba');
+          ctx.fill();
+        }
+
+        /* Ana parçacık */
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.life;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+
+        /* Glow */
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
+        const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 3);
+        glow.addColorStop(0, p.color.replace(')', `,${p.life * 0.3})`).replace('rgb', 'rgba'));
+        glow.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = glow;
+        ctx.fill();
+
+        if (p.life <= 0) particles.splice(i, 1);
+      }
+
+      this.fireworksAnimId = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    /* Resize handler */
+    this._fireworksResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    window.addEventListener('resize', this._fireworksResize);
+  }
+
+  stopFireworks() {
+    this.fireworksActive = false;
+    if (this.fireworksAnimId) {
+      cancelAnimationFrame(this.fireworksAnimId);
+      this.fireworksAnimId = null;
+    }
+    if (this._fireworksResize) {
+      window.removeEventListener('resize', this._fireworksResize);
+    }
+    const canvas = this.el.fireworksCanvas;
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      canvas.style.display = 'none';
+    }
   }
 
   /* ═══════════════════════════════════════════
@@ -478,6 +670,7 @@ class GameController {
       this.el.optionB.classList.remove('hand-hover', 'hand-fist');
       this.clearCategoryHover();
       this.clearReplayHover();
+      this.clearStartHover();
       return;
     }
 
@@ -495,6 +688,11 @@ class GameController {
       cursor.classList.add('fist');
     }
 
+    /* ── KARŞILAMA EKRANINDA EL TAKİBİ (Başla butonu) ── */
+    if (this.currentScreen === 'welcome') {
+      this.handleStartHandTracking(screenX, screenY, data.isOpen);
+    }
+
     /* ── KATEGORİ EKRANINDA EL TAKİBİ ── */
     if (this.currentScreen === 'category') {
       this.handleCategoryHandTracking(screenX, screenY, data.isOpen);
@@ -510,17 +708,45 @@ class GameController {
       this.el.optionA.classList.toggle('hand-fist', aHover && !data.isOpen);
       this.el.optionB.classList.toggle('hand-fist', bHover && !data.isOpen);
 
-      if (!aHover) {
-        this.el.optionA.classList.remove('hand-hover', 'hand-fist');
-      }
-      if (!bHover) {
-        this.el.optionB.classList.remove('hand-hover', 'hand-fist');
-      }
+      if (!aHover) this.el.optionA.classList.remove('hand-hover', 'hand-fist');
+      if (!bHover) this.el.optionB.classList.remove('hand-hover', 'hand-fist');
     }
 
-    /* ── SONUÇ EKRANINDA EL TAKİBİ (Tekrar Oyna butonu) ── */
+    /* ── SONUÇ EKRANINDA EL TAKİBİ (Tekrar Oyna) ── */
     if (this.currentScreen === 'result') {
       this.handleReplayHandTracking(screenX, screenY, data.isOpen);
+    }
+  }
+
+  /* ═══════════════════════════════════════════
+     KARŞILAMA EKRANI — BAŞLA BUTONU EL TAKİBİ
+     ═══════════════════════════════════════════ */
+  handleStartHandTracking(screenX, screenY, isOpen) {
+    const btn = this.el.btnStart;
+    const rect = btn.getBoundingClientRect();
+    const isOver = (
+      screenX >= rect.left && screenX <= rect.right &&
+      screenY >= rect.top && screenY <= rect.bottom
+    );
+    if (isOver) {
+      this.isHoveringStart = true;
+      if (isOpen) {
+        btn.classList.add('hand-hover');
+        btn.classList.remove('hand-fist');
+      } else {
+        btn.classList.add('hand-fist');
+        btn.classList.remove('hand-hover');
+      }
+    } else {
+      this.isHoveringStart = false;
+      btn.classList.remove('hand-hover', 'hand-fist');
+    }
+  }
+
+  clearStartHover() {
+    this.isHoveringStart = false;
+    if (this.el.btnStart) {
+      this.el.btnStart.classList.remove('hand-hover', 'hand-fist');
     }
   }
 
@@ -577,12 +803,10 @@ class GameController {
   handleReplayHandTracking(screenX, screenY, isOpen) {
     const btn = this.el.btnReplay;
     const rect = btn.getBoundingClientRect();
-
     const isOver = (
       screenX >= rect.left && screenX <= rect.right &&
       screenY >= rect.top && screenY <= rect.bottom
     );
-
     if (isOver) {
       this.isHoveringReplay = true;
       if (isOpen) {
