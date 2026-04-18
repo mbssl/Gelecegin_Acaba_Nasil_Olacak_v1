@@ -562,14 +562,24 @@ function checkConfidence(categoryId, userTags, activeFilters = {}) {
   };
 }
 
-const MIN_QUESTIONS = 8;
-const MAX_QUESTIONS = 15;
+const MIN_QUESTIONS = 10;
+const MAX_QUESTIONS = 20;
+const EARLY_EXIT_AFTER = 13;
 
 function shouldContinueAsking(questionCount, categoryId, userTags, activeFilters) {
   if (questionCount < MIN_QUESTIONS) return true;
   if (questionCount >= MAX_QUESTIONS) return false;
-  const { confident } = checkConfidence(categoryId, userTags, activeFilters);
-  return !confident;
+  /* 13. sorudan sonra güven yeterliyse çıkabilir */
+  if (questionCount >= EARLY_EXIT_AFTER) {
+    const { confident } = checkConfidence(categoryId, userTags, activeFilters);
+    if (confident) return false;
+  }
+  /* 10-12 arası da güven çok yüksekse çıkabilir (margin >= 0.5) */
+  if (questionCount >= MIN_QUESTIONS) {
+    const { confident, margin } = checkConfidence(categoryId, userTags, activeFilters);
+    if (confident && margin >= 0.5) return false;
+  }
+  return true;
 }
 
 function accumulateTags(currentTags, newTags) {
