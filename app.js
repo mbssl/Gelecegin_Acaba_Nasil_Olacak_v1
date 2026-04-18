@@ -836,7 +836,7 @@ class GameController {
     const canvas = document.getElementById('particles-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
-    const PARTICLE_COUNT = 60;
+    const PARTICLE_COUNT = 777;
 
     function resize() {
       canvas.width = window.innerWidth;
