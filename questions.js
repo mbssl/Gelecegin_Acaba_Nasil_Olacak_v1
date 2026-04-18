@@ -46,12 +46,12 @@ const GAME_DATA = {
         { id:'m7', phase:2, text:'Risk almayı sever misin?',
           condition:()=>true,
           optionA:{ label:'Risksiz, sabit ve güvenli işler', emoji:'🛡️', gradient:['#2c3e50','#4ca1af'], tags:{stability:3,structured:2,discipline:1} },
-          optionB:{ label:'Risk alırım, büyük kazanırım', emoji:'🎲', gradient:['#e65c00','#F9D423'], tags:{risk:3,courage:2,ambition:1} }
+          optionB:{ label:'Risk benim göbek adım :)', emoji:'🎲', gradient:['#e65c00','#F9D423'], tags:{risk:3,courage:2,ambition:1} }
         },
         { id:'m8', phase:2, text:'Hangi alanda çalışmak isterdin?',
           condition:(tags)=>tags.tech>=2||tags.analytic>=2,
-          optionA:{ label:'Yazılım ve teknoloji', emoji:'⌨️', gradient:['#667eea','#764ba2'], tags:{tech:3,innovation:2,machine:1} },
-          optionB:{ label:'Bilim ve araştırma', emoji:'🔬', gradient:['#36D1DC','#5B86E5'], tags:{depth:3,precision:2,meaning:1} }
+          optionA:{ label:'Yazılım ve Teknoloji', emoji:'⌨️', gradient:['#667eea','#764ba2'], tags:{tech:3,innovation:2,machine:1} },
+          optionB:{ label:'Bilim ve Araştırma', emoji:'🔬', gradient:['#36D1DC','#5B86E5'], tags:{depth:3,precision:2,meaning:1} }
         },
         { id:'m9', phase:2, text:'Hangi alanda çalışmak isterdin?',
           condition:(tags)=>tags.people>=2||tags.empathy>=2,
@@ -60,8 +60,8 @@ const GAME_DATA = {
         },
         { id:'m10', phase:2, text:'Hangisi sana daha yakın?',
           condition:(tags)=>tags.creative>=2||tags.art>=2,
-          optionA:{ label:'Görsel tasarım ve estetik', emoji:'🖌️', gradient:['#f6d365','#fda085'], tags:{art:3,creative:2,detail:1} },
-          optionB:{ label:'Mimari ve yapısal tasarım', emoji:'🏗️', gradient:['#2c3e50','#3498db'], tags:{creative:2,analytic:2,bigpicture:1} }
+          optionA:{ label:'Görsel Tasarım ve Estetik', emoji:'🖌️', gradient:['#f6d365','#fda085'], tags:{art:3,creative:2,detail:1} },
+          optionB:{ label:'Mimari ve Yapısal Tasarım', emoji:'🏗️', gradient:['#2c3e50','#3498db'], tags:{creative:2,analytic:2,bigpicture:1} }
         },
         /* ───── FAZ 3: Nihai Ayrım ───── */
         { id:'m11', phase:3, text:'İnovasyonu mu yoksa gelenekleri mi tercih edersin?',
@@ -91,8 +91,8 @@ const GAME_DATA = {
         },
         { id:'m16', phase:3, text:'Sanat mı bilim mi?',
           condition:()=>true,
-          optionA:{ label:'Sanat ve ifade', emoji:'🎭', gradient:['#f12711','#f5af19'], tags:{art:3,creative:2,social:1} },
-          optionB:{ label:'Bilim ve keşif', emoji:'🧬', gradient:['#36D1DC','#5B86E5'], tags:{analytic:2,logic:2,depth:2} }
+          optionA:{ label:'Sanat ve Duygu', emoji:'🎭', gradient:['#f12711','#f5af19'], tags:{art:3,creative:2,social:1} },
+          optionB:{ label:'Bilim ve Keşif', emoji:'🧬', gradient:['#36D1DC','#5B86E5'], tags:{analytic:2,logic:2,depth:2} }
         },
         { id:'m17', phase:3, text:'Gelecekte teknolojiyle ne kadar iç içe olmak istersin?',
           condition:()=>true,
@@ -106,13 +106,13 @@ const GAME_DATA = {
         },
         { id:'m19', phase:3, text:'Hayvanlarla mı yoksa insanlarla mı çalışmak istersin?',
           condition:(tags)=>tags.empathy>=2,
-          optionA:{ label:'Hayvanlarla çalışmak', emoji:'🐾', gradient:['#56ab2f','#a8e063'], tags:{empathy:2,field:1,satisfaction:2} },
-          optionB:{ label:'İnsanlarla çalışmak', emoji:'🤝', gradient:['#ff758c','#ff7eb3'], tags:{people:3,social:2,team:1} }
+          optionA:{ label:'Hayvanlarla', emoji:'🐾', gradient:['#56ab2f','#a8e063'], tags:{empathy:2,field:1,satisfaction:2} },
+          optionB:{ label:'İnsanlarla', emoji:'🤝', gradient:['#ff758c','#ff7eb3'], tags:{people:3,social:2,team:1} }
         },
         { id:'m20', phase:3, text:'Performansın nasıl ölçülsün?',
           condition:()=>true,
-          optionA:{ label:'Rakamlar ve sonuçlar', emoji:'📊', gradient:['#134E5E','#71B280'], tags:{analytic:2,money:1,ambition:1,precision:1} },
-          optionB:{ label:'Etki ve memnuniyet', emoji:'😊', gradient:['#ff758c','#ff7eb3'], tags:{satisfaction:2,empathy:1,meaning:1,people:1} }
+          optionA:{ label:'Rakamlar ve Sonuçlar', emoji:'📊', gradient:['#134E5E','#71B280'], tags:{analytic:2,money:1,ambition:1,precision:1} },
+          optionB:{ label:'Etki ve Memnuniyet', emoji:'😊', gradient:['#ff758c','#ff7eb3'], tags:{satisfaction:2,empathy:1,meaning:1,people:1} }
         },
         { id:'m21', phase:3, text:'Mesaili mi esnek saatli mi?',
           condition:()=>true,
@@ -121,7 +121,7 @@ const GAME_DATA = {
         },
         { id:'m22', phase:3, text:'Eğitim sürecin nasıl olsun?',
           condition:()=>true,
-          optionA:{ label:'Uzun eğitim, derin uzmanlık (tıp, hukuk)', emoji:'📚', gradient:['#0f0c29','#302b63'], tags:{discipline:2,depth:2,precision:1,detail:1} },
+          optionA:{ label:'Uzun eğitim, derin uzmanlık', emoji:'📚', gradient:['#0f0c29','#302b63'], tags:{discipline:2,depth:2,precision:1,detail:1} },
           optionB:{ label:'Hızlı öğren, hemen uygula', emoji:'⚡', gradient:['#e65c00','#F9D423'], tags:{tech:1,innovation:1,courage:1,risk:1} }
         },
         { id:'m23', phase:3, text:'Seyahat etmek mi yoksa bir yerde kök salmak mı?',
@@ -136,8 +136,8 @@ const GAME_DATA = {
         },
         { id:'m25', phase:3, text:'Doğayı korumak mı yoksa teknolojiyi ilerletmek mi?',
           condition:()=>true,
-          optionA:{ label:'Çevre ve sürdürülebilirlik', emoji:'🌱', gradient:['#56ab2f','#a8e063'], tags:{meaning:2,field:1,empathy:1,satisfaction:1} },
-          optionB:{ label:'Teknoloji ve ilerleme', emoji:'🔧', gradient:['#667eea','#764ba2'], tags:{tech:2,innovation:2,machine:1} }
+          optionA:{ label:'Çevre ve Sürdürülebilirlik', emoji:'🌱', gradient:['#56ab2f','#a8e063'], tags:{meaning:2,field:1,empathy:1,satisfaction:1} },
+          optionB:{ label:'Teknoloji ve İlerleme', emoji:'🔧', gradient:['#667eea','#764ba2'], tags:{tech:2,innovation:2,machine:1} }
         }
       ]
     },
@@ -149,13 +149,13 @@ const GAME_DATA = {
         /* ───── FAZ 1: Temel Kültür ───── */
         { id:'s1', phase:1, text:'Nasıl bir şirket kültürü istersin?',
           condition:()=>true,
-          optionA:{ label:'Yenilikçi ve hızlı tempolu', emoji:'🚀', gradient:['#f7971e','#ffd200'], tags:{innovation:3,speed:2,risk:1} },
-          optionB:{ label:'Köklü ve kurumsal', emoji:'🏛️', gradient:['#2c3e50','#4ca1af'], tags:{stability:3,professional:2,order:1} }
+          optionA:{ label:'Yenilikçi ve Hızlı Tempolu', emoji:'🚀', gradient:['#f7971e','#ffd200'], tags:{innovation:3,speed:2,risk:1} },
+          optionB:{ label:'Köklü ve Kurumsal', emoji:'🏛️', gradient:['#2c3e50','#4ca1af'], tags:{stability:3,professional:2,order:1} }
         },
         { id:'s2', phase:1, text:'Şirketin büyüklüğü?',
           condition:()=>true,
-          optionA:{ label:'Dev bir global şirket', emoji:'🌐', gradient:['#667eea','#764ba2'], tags:{scale:3,global:2,resources:1} },
-          optionB:{ label:'Küçük ama etkili bir startup', emoji:'💡', gradient:['#f6d365','#fda085'], tags:{freedom:2,creativity:2,speed:1,fun:1} }
+          optionA:{ label:'Dev bi` global şirket', emoji:'🌐', gradient:['#667eea','#764ba2'], tags:{scale:3,global:2,resources:1} },
+          optionB:{ label:'Küçük ama etkili bir start-up', emoji:'💡', gradient:['#f6d365','#fda085'], tags:{freedom:2,creativity:2,speed:1,fun:1} }
         },
         { id:'s3', phase:1, text:'Şirketin misyonu ne olsun?',
           condition:()=>true,
@@ -165,23 +165,23 @@ const GAME_DATA = {
         { id:'s4', phase:1, text:'Çalışma ortamı nasıl olsun?',
           condition:()=>true,
           optionA:{ label:'Eğlenceli ve rahat (hoodies OK!)', emoji:'😎', gradient:['#00b09b','#96c93d'], tags:{fun:3,casual:2,freedom:1} },
-          optionB:{ label:'Profesyonel ve prestijli', emoji:'👔', gradient:['#1a2a6c','#fdbb2d'], tags:{professional:3,prestige:2,order:1} }
+          optionB:{ label:'Profesyonel ve Prestijli', emoji:'👔', gradient:['#1a2a6c','#fdbb2d'], tags:{professional:3,prestige:2,order:1} }
         },
         /* ───── FAZ 2: Değerler ───── */
         { id:'s5', phase:2, text:'Hangisi daha önemli?',
           condition:()=>true,
-          optionA:{ label:'Yüksek maaş ve yan haklar', emoji:'💰', gradient:['#f7971e','#ffd200'], tags:{profit:3,resources:2,growth:1,intensity:1} },
-          optionB:{ label:'Anlam ve katkı sağlamak', emoji:'❤️', gradient:['#ff758c','#ff7eb3'], tags:{mission:3,community:1,social_impact:1} }
+          optionA:{ label:'Yüksek maaş ve Yan haklar', emoji:'💰', gradient:['#f7971e','#ffd200'], tags:{profit:3,resources:2,growth:1,intensity:1} },
+          optionB:{ label:'Anlam ve Katkı sağlamak', emoji:'❤️', gradient:['#ff758c','#ff7eb3'], tags:{mission:3,community:1,social_impact:1} }
         },
         { id:'s6', phase:2, text:'Şirketin sektörü?',
           condition:()=>true,
-          optionA:{ label:'Teknoloji ve yazılım', emoji:'💻', gradient:['#667eea','#764ba2'], tags:{innovation:2,future:2,creativity:1} },
-          optionB:{ label:'Finans ve danışmanlık', emoji:'📊', gradient:['#134E5E','#71B280'], tags:{profit:2,professional:2,prestige:1,order:1} }
+          optionA:{ label:'Teknoloji ve Yazılım', emoji:'💻', gradient:['#667eea','#764ba2'], tags:{innovation:2,future:2,creativity:1} },
+          optionB:{ label:'Finans ve Danışmanlık', emoji:'📊', gradient:['#134E5E','#71B280'], tags:{profit:2,professional:2,prestige:1,order:1} }
         },
         { id:'s7', phase:2, text:'Uzay ve havacılık mı yoksa otomotiv mi?',
           condition:(tags)=>tags.innovation>=2||tags.future>=2,
-          optionA:{ label:'Uzay keşfi ve roketler', emoji:'🚀', gradient:['#0B3D91','#FC3D21'], tags:{space:3,mission:2,future:2,risk:1} },
-          optionB:{ label:'Elektrikli araçlar ve mobilite', emoji:'🚗', gradient:['#cc0000','#1a1a1a'], tags:{innovation:2,speed:1,premium:1,future:1} }
+          optionA:{ label:'Uzay keşfi ve Roketler', emoji:'🚀', gradient:['#0B3D91','#FC3D21'], tags:{space:3,mission:2,future:2,risk:1} },
+          optionB:{ label:'Elektrikli araçlar ve Mobilite', emoji:'🚗', gradient:['#cc0000','#1a1a1a'], tags:{innovation:2,speed:1,premium:1,future:1} }
         },
         { id:'s8', phase:2, text:'Yerel mi global mi?',
           condition:()=>true,
@@ -195,29 +195,29 @@ const GAME_DATA = {
         },
         { id:'s10', phase:2, text:'Oyun ve eğlence mi yoksa yapay zeka mı?',
           condition:(tags)=>tags.creativity>=2||tags.fun>=2||tags.innovation>=2,
-          optionA:{ label:'Oyun ve eğlence dünyası', emoji:'🎮', gradient:['#8E2DE2','#4A00E0'], tags:{fun:3,creativity:3,casual:1,community:1} },
-          optionB:{ label:'Yapay zeka ve geleceğin teknolojisi', emoji:'🤖', gradient:['#10A37F','#1A1A2E'], tags:{innovation:3,future:3,mission:1} }
+          optionA:{ label:'Oyun ve Eğlence Dünyası', emoji:'🎮', gradient:['#8E2DE2','#4A00E0'], tags:{fun:3,creativity:3,casual:1,community:1} },
+          optionB:{ label:'Yapay zeka ve Geleceğin Teknolojisi', emoji:'🤖', gradient:['#10A37F','#1A1A2E'], tags:{innovation:3,future:3,mission:1} }
         },
         /* ───── FAZ 3: Nihai Ayrım ───── */
         { id:'s11', phase:3, text:'Çalışma hızın nasıl?',
           condition:()=>true,
           optionA:{ label:'7/24 yoğun, ama hızla büyü', emoji:'⚡', gradient:['#e65c00','#F9D423'], tags:{intensity:3,speed:2,growth:1} },
-          optionB:{ label:'Work-life balance, sürdürülebilir', emoji:'⚖️', gradient:['#a18cd1','#fbc2eb'], tags:{freedom:2,fun:1,stability:1} }
+          optionB:{ label:'İş/Hayat dengesi, sürdürülebilir', emoji:'⚖️', gradient:['#a18cd1','#fbc2eb'], tags:{freedom:2,fun:1,stability:1} }
         },
         { id:'s12', phase:3, text:'Savunma sanayii mi sivil teknoloji mi?',
           condition:(tags)=>tags.local>=2||tags.mission>=2,
-          optionA:{ label:'Milli savunma ve güvenlik', emoji:'🛡️', gradient:['#1B3A5C','#4A7FB5'], tags:{mission:2,local:2,order:1,stability:1,professional:1} },
-          optionB:{ label:'Sivil teknoloji ve inovasyon', emoji:'💡', gradient:['#f7971e','#ffd200'], tags:{innovation:2,accessible:1,creativity:1} }
+          optionA:{ label:'Milli Savunma ve Güvenlik', emoji:'🛡️', gradient:['#1B3A5C','#4A7FB5'], tags:{mission:2,local:2,order:1,stability:1,professional:1} },
+          optionB:{ label:'Sivil Teknoloji ve İnovasyon', emoji:'💡', gradient:['#f7971e','#ffd200'], tags:{innovation:2,accessible:1,creativity:1} }
         },
         { id:'s13', phase:3, text:'CEO olabilecek misin?',
           condition:()=>true,
-          optionA:{ label:'Evet, en tepeye çıkmak isterim', emoji:'👑', gradient:['#f7971e','#ffd200'], tags:{growth:2,prestige:1,scale:1,intensity:1} },
-          optionB:{ label:'Hayır, teknik uzman olmak isterim', emoji:'🔧', gradient:['#667eea','#764ba2'], tags:{quality:2,innovation:1,creativity:1} }
+          optionA:{ label:'Evet, en tepeye çıkmak isterim!', emoji:'👑', gradient:['#f7971e','#ffd200'], tags:{growth:2,prestige:1,scale:1,intensity:1} },
+          optionB:{ label:'Hayır, teknik uzman olmak isterim.', emoji:'🔧', gradient:['#667eea','#764ba2'], tags:{quality:2,innovation:1,creativity:1} }
         },
         { id:'s14', phase:3, text:'Şirketin ürünü ne olsun?',
           condition:()=>true,
-          optionA:{ label:'Fiziksel ürün (telefon, araba, çip)', emoji:'📱', gradient:['#0f0c29','#302b63'], tags:{premium:2,brand:1,quality:1} },
-          optionB:{ label:'Dijital ürün (yazılım, uygulama, AI)', emoji:'☁️', gradient:['#667eea','#764ba2'], tags:{innovation:2,future:1,creativity:1,speed:1} }
+          optionA:{ label:'Fiziksel ürün', emoji:'📱', gradient:['#0f0c29','#302b63'], tags:{premium:2,brand:1,quality:1} },
+          optionB:{ label:'Dijital ürün', emoji:'☁️', gradient:['#667eea','#764ba2'], tags:{innovation:2,future:1,creativity:1,speed:1} }
         },
         { id:'s15', phase:3, text:'Ofis lokasyonu?',
           condition:()=>true,
@@ -232,22 +232,22 @@ const GAME_DATA = {
         { id:'s17', phase:3, text:'Sosyal etki mi kâr mı?',
           condition:()=>true,
           optionA:{ label:'Topluma fayda sağlayan projelere öncelik', emoji:'🤲', gradient:['#ff758c','#ff7eb3'], tags:{mission:2,community:2,social_impact:1} },
-          optionB:{ label:'Kârlılık ve büyüme odaklı', emoji:'📈', gradient:['#f7971e','#ffd200'], tags:{profit:2,growth:2,intensity:1} }
+          optionB:{ label:'Kârlılık ve Büyüme Odaklı', emoji:'📈', gradient:['#f7971e','#ffd200'], tags:{profit:2,growth:2,intensity:1} }
         },
         { id:'s18', phase:3, text:'Hangi lider tarzını takdir edersin?',
           condition:()=>true,
-          optionA:{ label:'Vizyoner ve karizmatik (Elon Musk tarzı)', emoji:'🦅', gradient:['#cc0000','#1a1a1a'], tags:{mission:1,risk:1,speed:1,future:1,innovation:1} },
-          optionB:{ label:'Disiplinli ve stratejik (Tim Cook tarzı)', emoji:'♟️', gradient:['#333','#666'], tags:{quality:1,premium:1,brand:1,order:1,stability:1} }
+          optionA:{ label:'Vizyoner ve Karizmatik', emoji:'🦅', gradient:['#cc0000','#1a1a1a'], tags:{mission:1,risk:1,speed:1,future:1,innovation:1} },
+          optionB:{ label:'Disiplinli ve Stratejik', emoji:'♟️', gradient:['#333','#666'], tags:{quality:1,premium:1,brand:1,order:1,stability:1} }
         },
         { id:'s19', phase:3, text:'Müzik ve eğlence sektörü mü yoksa bilim mi?',
           condition:()=>true,
-          optionA:{ label:'Müzik, medya ve eğlence', emoji:'🎵', gradient:['#1DB954','#191414'], tags:{fun:2,creativity:2,casual:1,accessible:1} },
-          optionB:{ label:'Bilimsel araştırma ve keşif', emoji:'🔭', gradient:['#003366','#336699'], tags:{mission:2,prestige:2,resources:1,quality:1} }
+          optionA:{ label:'Müzik, Medya ve Eğlence', emoji:'🎵', gradient:['#1DB954','#191414'], tags:{fun:2,creativity:2,casual:1,accessible:1} },
+          optionB:{ label:'Bilimsel Araştırma ve Keşif', emoji:'🔭', gradient:['#003366','#336699'], tags:{mission:2,prestige:2,resources:1,quality:1} }
         },
         { id:'s20', phase:3, text:'Kıyafet kuralı?',
           condition:()=>true,
-          optionA:{ label:'İstediğimi giyerim', emoji:'👕', gradient:['#00b09b','#96c93d'], tags:{casual:2,freedom:2,fun:1} },
-          optionB:{ label:'Takım elbise gibi formal', emoji:'🤵', gradient:['#1a2a6c','#fdbb2d'], tags:{professional:2,prestige:1,order:1,traditional:1} }
+          optionA:{ label:'İstediğimi giyerim (:', emoji:'👕', gradient:['#00b09b','#96c93d'], tags:{casual:2,freedom:2,fun:1} },
+          optionB:{ label:'Takım elbise gibi formal.', emoji:'🤵', gradient:['#1a2a6c','#fdbb2d'], tags:{professional:2,prestige:1,order:1,traditional:1} }
         },
         { id:'s21', phase:3, text:'Hangi tip inovasyona daha yakınsın?',
           condition:()=>true,
@@ -261,8 +261,8 @@ const GAME_DATA = {
         },
         { id:'s23', phase:3, text:'Havacılık mı telekomünikasyon mu?',
           condition:(tags)=>tags.local>=2,
-          optionA:{ label:'Havacılık sektörü', emoji:'✈️', gradient:['#C8102E','#003E74'], tags:{brand:2,global:1,quality:1,professional:1} },
-          optionB:{ label:'Telekomünikasyon sektörü', emoji:'📶', gradient:['#FFD100','#003CA6'], tags:{local:2,community:1,stability:1,practical:1} }
+          optionA:{ label:'Havacılık Sektörü', emoji:'✈️', gradient:['#C8102E','#003E74'], tags:{brand:2,global:1,quality:1,professional:1} },
+          optionB:{ label:'Telekomünikasyon Sektörü', emoji:'📶', gradient:['#FFD100','#003CA6'], tags:{local:2,community:1,stability:1,practical:1} }
         },
         { id:'s24', phase:3, text:'Lüks mü yoksa erişilebilir mi?',
           condition:()=>true,
@@ -271,8 +271,8 @@ const GAME_DATA = {
         },
         { id:'s25', phase:3, text:'Yapay zeka çip üreticisi mi yapay zeka yazılım şirketi mi?',
           condition:(tags)=>tags.innovation>=3||tags.future>=3,
-          optionA:{ label:'Çip ve donanım (NVIDIA gibi)', emoji:'🔲', gradient:['#76B900','#1A1A1A'], tags:{quality:2,premium:1,resources:1,innovation:1} },
-          optionB:{ label:'AI modelleri ve yazılım (OpenAI gibi)', emoji:'🧠', gradient:['#10A37F','#1A1A2E'], tags:{innovation:2,mission:1,future:2,speed:1} }
+          optionA:{ label:'Çip ve donanım', emoji:'🔲', gradient:['#76B900','#1A1A1A'], tags:{quality:2,premium:1,resources:1,innovation:1} },
+          optionB:{ label:'AI modelleri ve yazılım', emoji:'🧠', gradient:['#10A37F','#1A1A2E'], tags:{innovation:2,mission:1,future:2,speed:1} }
         }
       ]
     },
@@ -284,7 +284,7 @@ const GAME_DATA = {
         /* ───── FAZ 1: Konum Tercihi ───── */
         { id:'c1', phase:1, text:'Nerede yaşamak istersin?',
           condition:()=>true,
-          optionA:{ label:'Yurt içinde (Türkiye)', emoji:'🇹🇷', gradient:['#E30A17','#FFFFFF'], tags:{domestic:5}, setFilter:{region:'domestic'} },
+          optionA:{ label:'Yurt içinde', emoji:'🇹🇷', gradient:['#E30A17','#FFFFFF'], tags:{domestic:5}, setFilter:{region:'domestic'} },
           optionB:{ label:'Yurt dışında', emoji:'🌎', gradient:['#4834d4','#686de0'], tags:{international:5}, setFilter:{region:'international'} }
         },
         /* Kıta seçimi (yurt dışı seçildiyse) */
@@ -425,13 +425,13 @@ const GAME_DATA = {
         },
         { id:'u2', phase:1, text:'Hangi kıtada okumak istersin?',
           condition:(t,f)=>f.region==='international',
-          optionA:{ label:'Avrupa (Oxford, Cambridge, ETH)', emoji:'🏰', gradient:['#6c5ce7','#a29bfe'], tags:{european:5}, setFilter:{continent:'europe'} },
-          optionB:{ label:'Kuzey Amerika (MIT, Stanford, Harvard)', emoji:'🗽', gradient:['#4834d4','#686de0'], tags:{american:3,international:2}, setFilter:{continent:'northamerica'} }
+          optionA:{ label:'Avrupa', emoji:'🏰', gradient:['#6c5ce7','#a29bfe'], tags:{european:5}, setFilter:{continent:'europe'} },
+          optionB:{ label:'Kuzey Amerika', emoji:'🗽', gradient:['#4834d4','#686de0'], tags:{american:3,international:2}, setFilter:{continent:'northamerica'} }
         },
         { id:'u3', phase:1, text:'Yoksa Asya mı?',
           condition:(t,f)=>f.region==='international'&&!f.continent,
-          optionA:{ label:'Asya (Tokyo, NUS, Seoul)', emoji:'🏯', gradient:['#FF69B4','#7B68EE'], tags:{asian:5}, setFilter:{continent:'asia'} },
-          optionB:{ label:'Diğer (Avustralya, Kanada)', emoji:'🌏', gradient:['#00b09b','#96c93d'], tags:{oceanian:2,international:2}, setFilter:{continent:'oceania'} }
+          optionA:{ label:'Asya', emoji:'🏯', gradient:['#FF69B4','#7B68EE'], tags:{asian:5}, setFilter:{continent:'asia'} },
+          optionB:{ label:'Diğer', emoji:'🌏', gradient:['#00b09b','#96c93d'], tags:{oceanian:2,international:2}, setFilter:{continent:'oceania'} }
         },
         /* ───── FAZ 2: Akademik Tercihler ───── */
         { id:'u4', phase:2, text:'Alan tercihin?',
@@ -463,7 +463,7 @@ const GAME_DATA = {
         { id:'u9', phase:3, text:'Hangi alanda uzmanlaşmak istersin?',
           condition:(tags)=>tags.techy>=2||tags.engineering>=2,
           optionA:{ label:'Yapay zeka ve veri bilimi', emoji:'🤖', gradient:['#10A37F','#1A1A2E'], tags:{techy:2,innovation:2,research:1} },
-          optionB:{ label:'Klasik mühendislik (makine, elektrik)', emoji:'🔧', gradient:['#2c3e50','#3498db'], tags:{engineering:2,precision:1} }
+          optionB:{ label:'Klasik mühendislik', emoji:'🔧', gradient:['#2c3e50','#3498db'], tags:{engineering:2,precision:1} }
         },
         { id:'u10', phase:3, text:'Tıp mı yoksa hukuk mu?',
           condition:(tags)=>tags.humanities>=2,
@@ -522,18 +522,18 @@ const GAME_DATA = {
         },
         { id:'u21', phase:3, text:'Mühendislik odaklı mı çok disiplinli mi?',
           condition:(t,f)=>f.region==='domestic',
-          optionA:{ label:'Teknik üniversite (ODTÜ, İTÜ tarzı)', emoji:'⚙️', gradient:['#0A2463','#3E92CC'], tags:{engineering:2,techy:2,competitive:1} },
-          optionB:{ label:'Kapsamlı üniversite (Hacettepe, Bilkent)', emoji:'🎯', gradient:['#E31837','#FF4757'], tags:{campus:2,community:2,research:1,medical:1} }
+          optionA:{ label:'Teknik üniversite', emoji:'⚙️', gradient:['#0A2463','#3E92CC'], tags:{engineering:2,techy:2,competitive:1} },
+          optionB:{ label:'Kapsamlı üniversite', emoji:'🎯', gradient:['#E31837','#FF4757'], tags:{campus:2,community:2,research:1,medical:1} }
         },
         { id:'u22', phase:3, text:'Şehir tercihi?',
           condition:(t,f)=>f.region==='domestic',
-          optionA:{ label:'Ankara (akademik başkent)', emoji:'🏛️', gradient:['#1B1464','#6C63FF'], tags:{turkey:1,campus:1,research:1,competitive:1} },
-          optionB:{ label:'İstanbul (şehir hayatı)', emoji:'🌉', gradient:['#FF6B35','#F7C59F'], tags:{turkey:1,urban:2,social:1,prestige:1} }
+          optionA:{ label:'Ankara', emoji:'🏛️', gradient:['#1B1464','#6C63FF'], tags:{turkey:1,campus:1,research:1,competitive:1} },
+          optionB:{ label:'İstanbul', emoji:'🌉', gradient:['#FF6B35','#F7C59F'], tags:{turkey:1,urban:2,social:1,prestige:1} }
         },
         { id:'u23', phase:3, text:'Ivy League tarzı mı teknik üniversite mi?',
           condition:(t,f)=>f.continent==='northamerica',
-          optionA:{ label:'Ivy League (Harvard, Yale, Princeton)', emoji:'🏆', gradient:['#A41034','#C90016'], tags:{prestige:3,tradition:2,humanities:1} },
-          optionB:{ label:'Teknik (MIT, Stanford, Caltech)', emoji:'🔬', gradient:['#a31f34','#8b1a2b'], tags:{techy:2,innovation:2,engineering:2,research:1} }
+          optionA:{ label:'Ivy League: Harvard, Yale, Princeton', emoji:'🏆', gradient:['#A41034','#C90016'], tags:{prestige:3,tradition:2,humanities:1} },
+          optionB:{ label:'Teknik: MIT, Stanford, Caltech', emoji:'🔬', gradient:['#a31f34','#8b1a2b'], tags:{techy:2,innovation:2,engineering:2,research:1} }
         },
         { id:'u24', phase:3, text:'İngiliz geleneği mi Alman mühendisliği mi?',
           condition:(t,f)=>f.continent==='europe',
