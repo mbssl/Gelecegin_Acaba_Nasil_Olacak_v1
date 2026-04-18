@@ -564,7 +564,7 @@ function checkConfidence(categoryId, userTags, activeFilters = {}) {
 
 const MIN_QUESTIONS = 10;
 const MAX_QUESTIONS = 20;
-const EARLY_EXIT_AFTER = 13;
+const EARLY_EXIT_AFTER = 15;
 
 function shouldContinueAsking(questionCount, categoryId, userTags, activeFilters) {
   if (questionCount < MIN_QUESTIONS) return true;
