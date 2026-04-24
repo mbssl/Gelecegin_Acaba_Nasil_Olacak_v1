@@ -187,7 +187,7 @@ const MESLEK_RESULTS = [
 const SIRKET_RESULTS = [
   {
     name: 'Apple', emoji: '🍎', gradient: ['#333', '#666'],
-    logo: 'https://logo.clearbit.com/apple.com',
+    logo: 'https://www.google.com/s2/favicons?domain=apple.com&sz=128',
     image: 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=800&h=500&fit=crop',
     filters: {},
     profile: { innovation: 2, premium: 2, quality: 2, brand: 2, scale: 1, global: 1, creativity: 1 },
@@ -195,7 +195,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'Google', emoji: '🔍', gradient: ['#4285F4', '#34A853'],
-    logo: 'https://logo.clearbit.com/google.com',
+    logo: 'https://www.google.com/s2/favicons?domain=google.com&sz=128',
     image: 'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=800&h=500&fit=crop',
     filters: {},
     profile: { innovation: 2, freedom: 2, fun: 2, scale: 2, global: 2, creativity: 1, accessible: 1 },
@@ -203,7 +203,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'Tesla', emoji: '🔋', gradient: ['#cc0000', '#1a1a1a'],
-    logo: 'https://logo.clearbit.com/tesla.com',
+    logo: 'https://www.google.com/s2/favicons?domain=tesla.com&sz=128',
     image: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=800&h=500&fit=crop',
     filters: {},
     profile: { innovation: 2, mission: 2, speed: 2, future: 2, risk: 1, premium: 1, intensity: 1 },
@@ -211,7 +211,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'Netflix', emoji: '🎬', gradient: ['#E50914', '#B20710'],
-    logo: 'https://logo.clearbit.com/netflix.com',
+    logo: 'https://www.google.com/s2/favicons?domain=netflix.com&sz=128',
     image: 'https://images.unsplash.com/photo-1574375927938-d5a98e8d7e28?w=800&h=500&fit=crop',
     filters: {},
     profile: { freedom: 2, fun: 2, global: 2, creativity: 2, casual: 1, innovation: 1 },
@@ -219,7 +219,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'NASA', emoji: '🌌', gradient: ['#0B3D91', '#FC3D21'],
-    logo: 'https://logo.clearbit.com/nasa.gov',
+    logo: 'https://www.google.com/s2/favicons?domain=nasa.gov&sz=128',
     image: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&h=500&fit=crop',
     filters: {},
     profile: { mission: 2, space: 2, future: 2, prestige: 2, professional: 1, resources: 1, scale: 1 },
@@ -227,7 +227,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'SpaceX', emoji: '🚀', gradient: ['#005288', '#A7A9AC'],
-    logo: 'https://logo.clearbit.com/spacex.com',
+    logo: 'https://www.google.com/s2/favicons?domain=spacex.com&sz=128',
     image: 'https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?w=800&h=500&fit=crop',
     filters: {},
     profile: { innovation: 2, space: 2, future: 2, risk: 2, speed: 2, mission: 1, intensity: 1 },
@@ -235,7 +235,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'Microsoft', emoji: '🪟', gradient: ['#00A4EF', '#7FBA00'],
-    logo: 'https://logo.clearbit.com/microsoft.com',
+    logo: 'https://www.google.com/s2/favicons?domain=microsoft.com&sz=128',
     image: 'https://images.unsplash.com/photo-1640158615573-cd28feb1bf4e?w=800&h=500&fit=crop',
     filters: {},
     profile: { scale: 2, global: 2, innovation: 1, professional: 1, stability: 1, resources: 2, quality: 1 },
@@ -243,7 +243,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'Meta', emoji: '🌐', gradient: ['#0668E1', '#00C2FF'],
-    logo: 'https://logo.clearbit.com/meta.com',
+    logo: 'https://www.google.com/s2/favicons?domain=meta.com&sz=128',
     image: 'https://images.unsplash.com/photo-1636114673156-052a83459fc1?w=800&h=500&fit=crop',
     filters: {},
     profile: { innovation: 2, scale: 2, global: 2, fun: 1, future: 2, creativity: 1, speed: 1 },
@@ -251,7 +251,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'OpenAI', emoji: '🧠', gradient: ['#10A37F', '#1A1A2E'],
-    logo: 'https://logo.clearbit.com/openai.com',
+    logo: 'https://www.google.com/s2/favicons?domain=openai.com&sz=128',
     image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&h=500&fit=crop',
     filters: {},
     profile: { innovation: 2, mission: 2, future: 2, resources: 1, prestige: 1, quality: 1, speed: 1 },
@@ -259,7 +259,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'NVIDIA', emoji: '💚', gradient: ['#76B900', '#1A1A1A'],
-    logo: 'https://logo.clearbit.com/nvidia.com',
+    logo: 'https://www.google.com/s2/favicons?domain=nvidia.com&sz=128',
     image: 'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800&h=500&fit=crop',
     filters: {},
     profile: { innovation: 2, quality: 2, scale: 1, future: 2, resources: 1, professional: 1 },
@@ -267,7 +267,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'Samsung', emoji: '📱', gradient: ['#034EA2', '#1C6DD0'],
-    logo: 'https://logo.clearbit.com/samsung.com',
+    logo: 'https://www.google.com/s2/favicons?domain=samsung.com&sz=128',
     image: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=800&h=500&fit=crop',
     filters: {},
     profile: { scale: 2, stability: 2, global: 2, traditional: 1, resources: 1, brand: 1, order: 1 },
@@ -275,7 +275,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'Spotify', emoji: '🎵', gradient: ['#1DB954', '#191414'],
-    logo: 'https://logo.clearbit.com/spotify.com',
+    logo: 'https://www.google.com/s2/favicons?domain=spotify.com&sz=128',
     image: 'https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=800&h=500&fit=crop',
     filters: {},
     profile: { fun: 2, freedom: 2, creativity: 2, global: 1, casual: 1, accessible: 1 },
@@ -283,7 +283,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'Amazon', emoji: '📦', gradient: ['#FF9900', '#232F3E'],
-    logo: 'https://logo.clearbit.com/amazon.com',
+    logo: 'https://www.google.com/s2/favicons?domain=amazon.com&sz=128',
     image: 'https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=800&h=500&fit=crop',
     filters: {},
     profile: { scale: 2, speed: 2, global: 2, growth: 2, resources: 1, profit: 1, intensity: 1 },
@@ -291,7 +291,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'BMW', emoji: '🏎️', gradient: ['#1C69D4', '#262626'],
-    logo: 'https://logo.clearbit.com/bmw.com',
+    logo: 'https://www.google.com/s2/favicons?domain=bmw.com&sz=128',
     image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&h=500&fit=crop',
     filters: {},
     profile: { premium: 2, quality: 2, brand: 2, traditional: 1, professional: 1, order: 1, scale: 1 },
@@ -299,7 +299,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'Airbus', emoji: '✈️', gradient: ['#00205B', '#009FE3'],
-    logo: 'https://logo.clearbit.com/airbus.com',
+    logo: 'https://www.google.com/s2/favicons?domain=airbus.com&sz=128',
     image: 'https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=800&h=500&fit=crop',
     filters: {},
     profile: { mission: 1, professional: 2, quality: 2, scale: 2, order: 1, resources: 1, space: 1 },
@@ -307,7 +307,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'CERN', emoji: '⚛️', gradient: ['#003366', '#336699'],
-    logo: 'https://logo.clearbit.com/home.cern',
+    logo: 'https://www.google.com/s2/favicons?domain=home.cern&sz=128',
     image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=500&fit=crop',
     filters: {},
     profile: { mission: 2, prestige: 2, resources: 2, quality: 1, professional: 1, future: 1 },
@@ -315,7 +315,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'Adobe', emoji: '🎨', gradient: ['#FF0000', '#CC0000'],
-    logo: 'https://logo.clearbit.com/adobe.com',
+    logo: 'https://www.google.com/s2/favicons?domain=adobe.com&sz=128',
     image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&h=500&fit=crop',
     filters: {},
     profile: { creativity: 2, quality: 2, innovation: 1, brand: 1, professional: 1, scale: 1 },
@@ -323,7 +323,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'Goldman Sachs', emoji: '🏦', gradient: ['#00263A', '#7399C6'],
-    logo: 'https://logo.clearbit.com/goldmansachs.com',
+    logo: 'https://www.google.com/s2/favicons?domain=goldmansachs.com&sz=128',
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=500&fit=crop',
     filters: {},
     profile: { prestige: 2, profit: 2, professional: 2, intensity: 2, scale: 1, stability: 1, order: 1 },
@@ -331,7 +331,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'Türk Hava Yolları', emoji: '🛫', gradient: ['#C8102E', '#003E74'],
-    logo: 'https://logo.clearbit.com/turkishairlines.com',
+    logo: 'https://www.google.com/s2/favicons?domain=turkishairlines.com&sz=128',
     image: 'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=800&h=500&fit=crop',
     filters: {},
     profile: { stability: 2, local: 1, global: 1, brand: 1, professional: 1, community: 1, order: 1, quality: 1 },
@@ -339,7 +339,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'ASELSAN', emoji: '🛡️', gradient: ['#1B3A5C', '#4A7FB5'],
-    logo: 'https://logo.clearbit.com/aselsan.com.tr',
+    logo: 'https://www.google.com/s2/favicons?domain=aselsan.com.tr&sz=128',
     image: 'https://images.unsplash.com/photo-1580752300992-559f8e19950b?w=800&h=500&fit=crop',
     filters: {},
     profile: { mission: 2, stability: 2, local: 2, professional: 1, quality: 1, resources: 1, order: 1 },
@@ -347,7 +347,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'Epic Games', emoji: '🎮', gradient: ['#2F2F2F', '#0078F2'],
-    logo: 'https://logo.clearbit.com/epicgames.com',
+    logo: 'https://www.google.com/s2/favicons?domain=epicgames.com&sz=128',
     image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=500&fit=crop',
     filters: {},
     profile: { creativity: 2, fun: 2, innovation: 1, freedom: 1, global: 1, speed: 1 },
@@ -355,7 +355,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'Riot Games', emoji: '⚔️', gradient: ['#D32936', '#1A1A2E'],
-    logo: 'https://logo.clearbit.com/riotgames.com',
+    logo: 'https://www.google.com/s2/favicons?domain=riotgames.com&sz=128',
     image: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&h=500&fit=crop',
     filters: {},
     profile: { creativity: 2, fun: 2, community: 2, global: 1, casual: 1 },
@@ -363,7 +363,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'Red Bull', emoji: '🐂', gradient: ['#DB0A40', '#F7DC6F'],
-    logo: 'https://logo.clearbit.com/redbull.com',
+    logo: 'https://www.google.com/s2/favicons?domain=redbull.com&sz=128',
     image: 'https://images.unsplash.com/photo-1622566420685-cbb1e2143218?w=800&h=500&fit=crop',
     filters: {},
     profile: { fun: 2, speed: 2, risk: 1, brand: 2, global: 1, creativity: 1, casual: 1, growth: 1 },
@@ -371,7 +371,7 @@ const SIRKET_RESULTS = [
   },
   {
     name: 'Turkcell', emoji: '📶', gradient: ['#FFD100', '#003CA6'],
-    logo: 'https://logo.clearbit.com/turkcell.com.tr',
+    logo: 'https://www.google.com/s2/favicons?domain=turkcell.com.tr&sz=128',
     image: 'https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=800&h=500&fit=crop',
     filters: {},
     profile: { stability: 2, local: 2, community: 2, traditional: 1, practical: 1, social_impact: 1 },
@@ -454,41 +454,41 @@ const SEHIR_RESULTS = [
 /* ──────────────────── ÜNİVERSİTE SONUÇLARI (25+) ──────────────────── */
 const UNIVERSITE_RESULTS = [
   /* Türkiye */
-  { name: 'Hacettepe Üniversitesi', emoji: '🦌', gradient: ['#E31837', '#FF4757'], logo: 'https://logo.clearbit.com/hacettepe.edu.tr', image: 'https://images.unsplash.com/photo-1607237138185-eedd9c632b38?w=800&h=500&fit=crop', filters: { region: 'domestic', continent: 'europe' }, profile: { turkey: 2, research: 2, campus: 2, medical: 2, community: 2 }, reasons: ['Türkiye\'deki güçlü akademik temelin ve kampüs yaşamına olan sevgin Hacettepe\'de bekliyor.', 'Topluluk ruhun ve araştırma merakın Hacettepe\'nin dinamik yapısıyla uyum sağlıyor.', 'Bilime olan ilgin ve yerel değerlere bağlılığın Hacettepe\'yi senin akademik yuvana dönüştürüyor.'] },
-  { name: 'ODTÜ', emoji: '⚙️', gradient: ['#8B0000', '#CC0000'], logo: 'https://logo.clearbit.com/metu.edu.tr', image: 'https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=500&fit=crop', filters: { region: 'domestic', continent: 'europe' }, profile: { turkey: 2, techy: 2, campus: 2, competitive: 2, engineering: 2 }, reasons: ['Mühendislik tutkunun ve rekabetçi yapın ODTÜ\'nün efsanevi kampüsünde bekliyor.', 'Teknolojiye olan bağlılığın ODTÜ\'de parlatacak.', 'Türkiye\'nin en iyi teknik üniversitelerinden birinde olmak senin karakterinle örtüşüyor.'] },
-  { name: 'Boğaziçi Üniversitesi', emoji: '🌊', gradient: ['#003591', '#0047BB'], logo: 'https://logo.clearbit.com/boun.edu.tr', image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&h=500&fit=crop', filters: { region: 'domestic', continent: 'europe' }, profile: { turkey: 2, prestige: 2, urban: 2, international: 1, social: 2, competitive: 1 }, reasons: ['Prestije verdiğin değer ve şehir yaşamı tercihin Boğaziçi\'nde seni bekliyor.', 'Sosyal yapın Boğaziçi\'nin kozmopolit atmosferiyle mükemmel uyumlu.', 'İstanbul\'un kalbinde akademik mükemmellik arayışın Boğaziçi\'ni ideal kılıyor.'] },
-  { name: 'İTÜ', emoji: '🔧', gradient: ['#0A2463', '#3E92CC'], logo: 'https://logo.clearbit.com/itu.edu.tr', image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=500&fit=crop', filters: { region: 'domestic', continent: 'europe' }, profile: { turkey: 2, engineering: 2, techy: 2, campus: 1, competitive: 1, urban: 1 }, reasons: ['Mühendislik tutkun ve teknoloji merakın İTÜ\'nün köklü geleneğinde karşılığını bulacak.', 'Türkiye\'nin en eski teknik üniversitesinde yer almak senin karakterinle örtüşüyor.', 'İstanbul\'da mühendislik eğitimi hayalin İTÜ\'de gerçeğe dönüşecek.'] },
-  { name: 'Bilkent Üniversitesi', emoji: '🌟', gradient: ['#003366', '#FF6600'], logo: 'https://logo.clearbit.com/bilkent.edu.tr', image: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=800&h=500&fit=crop', filters: { region: 'domestic', continent: 'europe' }, profile: { turkey: 2, campus: 2, research: 1, international: 1, prestige: 1, community: 1 }, reasons: ['Kampüs yaşamına olan sevgin Bilkent\'in yeşil dünyasında seni bekliyor.', 'Uluslararası akademik ortam ve araştırma imkanları Bilkent\'i ideal kılıyor.', 'Topluluk ruhu ve prestijli eğitim Bilkent\'i senin üniversiten yapıyor.'] },
-  { name: 'Koç Üniversitesi', emoji: '💎', gradient: ['#00205B', '#C7A600'], logo: 'https://logo.clearbit.com/ku.edu.tr', image: 'https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?w=800&h=500&fit=crop', filters: { region: 'domestic', continent: 'europe' }, profile: { turkey: 2, prestige: 2, campus: 1, entrepreneurial: 1, international: 1, competitive: 1, research: 1 }, reasons: ['Prestij arayışın ve girişimcilik ruhun Koç Üniversitesi\'nde karşılığını bulacak.', 'Uluslararası akademik standartlar ve araştırma imkanları seni bekliyor.', 'Rekabetçi ortam ve mükemmeliyet arayışın Koç\'u senin üniversiten yapıyor.'] },
-  { name: 'Sabancı Üniversitesi', emoji: '🎯', gradient: ['#1E3A5F', '#FF6B00'], logo: 'https://logo.clearbit.com/sabanciuniv.edu', image: 'https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=500&fit=crop', filters: { region: 'domestic', continent: 'europe' }, profile: { turkey: 2, innovation: 2, campus: 1, entrepreneurial: 2, research: 1, community: 1 }, reasons: ['Yenilikçi eğitim anlayışı ve girişimcilik kültürü Sabancı\'da seni bekliyor.', 'Disiplinler arası yaklaşım ve kampüs yaşamı Sabancı\'yı ideal kılıyor.', 'İnovasyon odaklı yapın Sabancı Üniversitesi\'nde parlayacak.'] },
+  { name: 'Hacettepe Üniversitesi', emoji: '🦌', gradient: ['#E31837', '#FF4757'], logo: 'https://www.google.com/s2/favicons?domain=hacettepe.edu.tr&sz=128', image: 'https://images.unsplash.com/photo-1607237138185-eedd9c632b38?w=800&h=500&fit=crop', filters: { region: 'domestic', continent: 'europe' }, profile: { turkey: 2, research: 2, campus: 2, medical: 2, community: 2 }, reasons: ['Türkiye\'deki güçlü akademik temelin ve kampüs yaşamına olan sevgin Hacettepe\'de bekliyor.', 'Topluluk ruhun ve araştırma merakın Hacettepe\'nin dinamik yapısıyla uyum sağlıyor.', 'Bilime olan ilgin ve yerel değerlere bağlılığın Hacettepe\'yi senin akademik yuvana dönüştürüyor.'] },
+  { name: 'ODTÜ', emoji: '⚙️', gradient: ['#8B0000', '#CC0000'], logo: 'https://www.google.com/s2/favicons?domain=metu.edu.tr&sz=128', image: 'https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=500&fit=crop', filters: { region: 'domestic', continent: 'europe' }, profile: { turkey: 2, techy: 2, campus: 2, competitive: 2, engineering: 2 }, reasons: ['Mühendislik tutkunun ve rekabetçi yapın ODTÜ\'nün efsanevi kampüsünde bekliyor.', 'Teknolojiye olan bağlılığın ODTÜ\'de parlatacak.', 'Türkiye\'nin en iyi teknik üniversitelerinden birinde olmak senin karakterinle örtüşüyor.'] },
+  { name: 'Boğaziçi Üniversitesi', emoji: '🌊', gradient: ['#003591', '#0047BB'], logo: 'https://www.google.com/s2/favicons?domain=boun.edu.tr&sz=128', image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&h=500&fit=crop', filters: { region: 'domestic', continent: 'europe' }, profile: { turkey: 2, prestige: 2, urban: 2, international: 1, social: 2, competitive: 1 }, reasons: ['Prestije verdiğin değer ve şehir yaşamı tercihin Boğaziçi\'nde seni bekliyor.', 'Sosyal yapın Boğaziçi\'nin kozmopolit atmosferiyle mükemmel uyumlu.', 'İstanbul\'un kalbinde akademik mükemmellik arayışın Boğaziçi\'ni ideal kılıyor.'] },
+  { name: 'İTÜ', emoji: '🔧', gradient: ['#0A2463', '#3E92CC'], logo: 'https://www.google.com/s2/favicons?domain=itu.edu.tr&sz=128', image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=500&fit=crop', filters: { region: 'domestic', continent: 'europe' }, profile: { turkey: 2, engineering: 2, techy: 2, campus: 1, competitive: 1, urban: 1 }, reasons: ['Mühendislik tutkun ve teknoloji merakın İTÜ\'nün köklü geleneğinde karşılığını bulacak.', 'Türkiye\'nin en eski teknik üniversitesinde yer almak senin karakterinle örtüşüyor.', 'İstanbul\'da mühendislik eğitimi hayalin İTÜ\'de gerçeğe dönüşecek.'] },
+  { name: 'Bilkent Üniversitesi', emoji: '🌟', gradient: ['#003366', '#FF6600'],  logo: 'https://www.google.com/s2/favicons?domain=bilkent.edu.tr&sz=128', image: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=800&h=500&fit=crop', filters: { region: 'domestic', continent: 'europe' }, profile: { turkey: 2, campus: 2, research: 1, international: 1, prestige: 1, community: 1 }, reasons: ['Kampüs yaşamına olan sevgin Bilkent\'in yeşil dünyasında seni bekliyor.', 'Uluslararası akademik ortam ve araştırma imkanları Bilkent\'i ideal kılıyor.', 'Topluluk ruhu ve prestijli eğitim Bilkent\'i senin üniversiten yapıyor.'] },
+  { name: 'Koç Üniversitesi', emoji: '💎', gradient: ['#00205B', '#C7A600'], logo: 'https://www.google.com/s2/favicons?domain=ku.edu.tr&sz=128', image: 'https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?w=800&h=500&fit=crop', filters: { region: 'domestic', continent: 'europe' }, profile: { turkey: 2, prestige: 2, campus: 1, entrepreneurial: 1, international: 1, competitive: 1, research: 1 }, reasons: ['Prestij arayışın ve girişimcilik ruhun Koç Üniversitesi\'nde karşılığını bulacak.', 'Uluslararası akademik standartlar ve araştırma imkanları seni bekliyor.', 'Rekabetçi ortam ve mükemmeliyet arayışın Koç\'u senin üniversiten yapıyor.'] },
+  { name: 'Sabancı Üniversitesi', emoji: '🎯', gradient: ['#1E3A5F', '#FF6B00'], logo: 'https://www.google.com/s2/favicons?domain=sabanciuniv.edu&sz=128', image: 'https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=500&fit=crop', filters: { region: 'domestic', continent: 'europe' }, profile: { turkey: 2, innovation: 2, campus: 1, entrepreneurial: 2, research: 1, community: 1 }, reasons: ['Yenilikçi eğitim anlayışı ve girişimcilik kültürü Sabancı\'da seni bekliyor.', 'Disiplinler arası yaklaşım ve kampüs yaşamı Sabancı\'yı ideal kılıyor.', 'İnovasyon odaklı yapın Sabancı Üniversitesi\'nde parlayacak.'] },
 
   /* ABD */
-  { name: 'MIT', emoji: '🔬', gradient: ['#a31f34', '#8b1a2b'], logo: 'https://logo.clearbit.com/mit.edu', image: 'https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'northamerica' }, profile: { research: 2, techy: 2, innovation: 2, competitive: 2, international: 2, engineering: 1 }, reasons: ['Teknik zekân ve araştırma tutkunun MIT\'nin laboratuvarlarında devrim niteliğinde keşiflere imza atacak.', 'Rekabetçi yapın Cambridge, Massachusetts\'te seni bekliyor.', 'Teknolojiye olan bağlılığın MIT\'yi senin için ideal kılıyor.'] },
-  { name: 'Stanford', emoji: '☀️', gradient: ['#8C1515', '#B83A4B'], logo: 'https://logo.clearbit.com/stanford.edu', image: 'https://images.unsplash.com/photo-1584008487002-a032be6d0d6b?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'northamerica' }, profile: { innovation: 2, entrepreneurial: 2, campus: 2, techy: 2, research: 1 }, reasons: ['Girişimcilik ruhun Stanford\'un California güneşi altında parlayacak.', 'Silikon Vadisi\'nin kalbinde teknoloji ilgin karşılığını bulacak.', 'Büyük hayaller kurma kapasiten Stanford\'u senin üniversiten yapıyor.'] },
-  { name: 'Harvard', emoji: '🏆', gradient: ['#A41034', '#C90016'], logo: 'https://logo.clearbit.com/harvard.edu', image: 'https://images.unsplash.com/photo-1559135197-8a45ea74d367?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'northamerica' }, profile: { prestige: 2, competitive: 2, diverse: 2, research: 2, global: 2, humanities: 1 }, reasons: ['Küresel vizyonun ve rekabetçi ruhun Harvard\'ın efsanevi kampüsünde bekliyor.', 'Çeşitliliğe olan açıklığın Harvard\'ın zengin ortamıyla örtüşüyor.', 'Prestije verdiğin değer Harvard\'ı senin için kaçınılmaz kılıyor.'] },
-  { name: 'Caltech', emoji: '🚀', gradient: ['#FF6C0C', '#003B49'], logo: 'https://logo.clearbit.com/caltech.edu', image: 'https://images.unsplash.com/photo-1607237138185-eedd9c632b38?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'northamerica' }, profile: { research: 2, engineering: 2, innovation: 1, competitive: 1, techy: 1, precision: 1 }, reasons: ['Bilimsel araştırmaya olan tutkunun ve hassasiyetin Caltech\'te parlayacak.', 'Küçük ama etkili kampüs ortamı ve derin araştırma fırsatları seni bekliyor.', 'NASA Jet Propulsion Lab ile işbirliği uzay ve mühendislik tutkunu tatmin edecek.'] },
-  { name: 'Princeton', emoji: '🐯', gradient: ['#FF8F00', '#000000'], logo: 'https://logo.clearbit.com/princeton.edu', image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'northamerica' }, profile: { prestige: 2, research: 1, campus: 2, tradition: 1, humanities: 1, competitive: 1 }, reasons: ['Kampüs yaşamına olan sevgin ve prestij arayışın Princeton\'da karşılığını bulacak.', 'Köklü gelenek ve akademik mükemmellik Princeton\'u ideal kılıyor.', 'Einstein\'ın yürüdüğü koridorlarda akademik yolculuğun başlayacak.'] },
-  { name: 'Yale', emoji: '📚', gradient: ['#00356B', '#FFFFFF'], logo: 'https://logo.clearbit.com/yale.edu', image: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'northamerica' }, profile: { prestige: 2, tradition: 2, humanities: 2, campus: 1, social: 1, competitive: 1 }, reasons: ['Beşeri bilimlere olan ilgin ve gelenek arayışın Yale\'de karşılığını bulacak.', 'Ivy League prestiji ve akademik derinlik Yale\'i senin üniversiten yapıyor.', 'Kampüs geleneği ve sosyal yaşam Yale\'de benzersiz deneyimler sunacak.'] },
-  { name: 'Columbia', emoji: '🗽', gradient: ['#B9D9EB', '#002B7F'], logo: 'https://logo.clearbit.com/columbia.edu', image: 'https://images.unsplash.com/photo-1568792923760-d70635a89fdc?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'northamerica' }, profile: { prestige: 2, urban: 2, diverse: 1, research: 1, global: 1, social: 1, humanities: 1 }, reasons: ['New York\'un kalbinde akademik mükemmellik arayışın Columbia\'da karşılığını bulacak.', 'Şehir yaşamı tercihin ve kozmopolit ruhun Columbia\'yla örtüşüyor.', 'Global bakış açın ve çeşitliliğe olan açıklığın Columbia\'da parlayacak.'] },
+  { name: 'MIT', emoji: '🔬', gradient: ['#a31f34', '#8b1a2b'], logo: 'https://www.google.com/s2/favicons?domain=mit.edu&sz=128', image: 'https://images.unsplash.com/photo-1564981797816-1043664bf78d?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'northamerica' }, profile: { research: 2, techy: 2, innovation: 2, competitive: 2, international: 2, engineering: 1 }, reasons: ['Teknik zekân ve araştırma tutkunun MIT\'nin laboratuvarlarında devrim niteliğinde keşiflere imza atacak.', 'Rekabetçi yapın Cambridge, Massachusetts\'te seni bekliyor.', 'Teknolojiye olan bağlılığın MIT\'yi senin için ideal kılıyor.'] },
+  { name: 'Stanford', emoji: '☀️', gradient: ['#8C1515', '#B83A4B'], logo: 'https://www.google.com/s2/favicons?domain=stanford.edu&sz=128', image: 'https://images.unsplash.com/photo-1584008487002-a032be6d0d6b?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'northamerica' }, profile: { innovation: 2, entrepreneurial: 2, campus: 2, techy: 2, research: 1 }, reasons: ['Girişimcilik ruhun Stanford\'un California güneşi altında parlayacak.', 'Silikon Vadisi\'nin kalbinde teknoloji ilgin karşılığını bulacak.', 'Büyük hayaller kurma kapasiten Stanford\'u senin üniversiten yapıyor.'] },
+  { name: 'Harvard', emoji: '🏆', gradient: ['#A41034', '#C90016'], logo: 'https://www.google.com/s2/favicons?domain=harvard.edu&sz=128', image: 'https://images.unsplash.com/photo-1559135197-8a45ea74d367?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'northamerica' }, profile: { prestige: 2, competitive: 2, diverse: 2, research: 2, global: 2, humanities: 1 }, reasons: ['Küresel vizyonun ve rekabetçi ruhun Harvard\'ın efsanevi kampüsünde bekliyor.', 'Çeşitliliğe olan açıklığın Harvard\'ın zengin ortamıyla örtüşüyor.', 'Prestije verdiğin değer Harvard\'ı senin için kaçınılmaz kılıyor.'] },
+  { name: 'Caltech', emoji: '🚀', gradient: ['#FF6C0C', '#003B49'], logo: 'https://www.google.com/s2/favicons?domain=caltech.edu&sz=128', image: 'https://images.unsplash.com/photo-1607237138185-eedd9c632b38?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'northamerica' }, profile: { research: 2, engineering: 2, innovation: 1, competitive: 1, techy: 1, precision: 1 }, reasons: ['Bilimsel araştırmaya olan tutkunun ve hassasiyetin Caltech\'te parlayacak.', 'Küçük ama etkili kampüs ortamı ve derin araştırma fırsatları seni bekliyor.', 'NASA Jet Propulsion Lab ile işbirliği uzay ve mühendislik tutkunu tatmin edecek.'] },
+  { name: 'Princeton', emoji: '🐯', gradient: ['#FF8F00', '#000000'], logo: 'https://www.google.com/s2/favicons?domain=princeton.edu&sz=128', image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'northamerica' }, profile: { prestige: 2, research: 1, campus: 2, tradition: 1, humanities: 1, competitive: 1 }, reasons: ['Kampüs yaşamına olan sevgin ve prestij arayışın Princeton\'da karşılığını bulacak.', 'Köklü gelenek ve akademik mükemmellik Princeton\'u ideal kılıyor.', 'Einstein\'ın yürüdüğü koridorlarda akademik yolculuğun başlayacak.'] },
+  { name: 'Yale', emoji: '📚', gradient: ['#00356B', '#FFFFFF'], logo: 'https://www.google.com/s2/favicons?domain=yale.edu&sz=128', image: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'northamerica' }, profile: { prestige: 2, tradition: 2, humanities: 2, campus: 1, social: 1, competitive: 1 }, reasons: ['Beşeri bilimlere olan ilgin ve gelenek arayışın Yale\'de karşılığını bulacak.', 'Ivy League prestiji ve akademik derinlik Yale\'i senin üniversiten yapıyor.', 'Kampüs geleneği ve sosyal yaşam Yale\'de benzersiz deneyimler sunacak.'] },
+  { name: 'Columbia', emoji: '🗽', gradient: ['#B9D9EB', '#002B7F'], logo: 'https://www.google.com/s2/favicons?domain=columbia.edu&sz=128', image: 'https://images.unsplash.com/photo-1568792923760-d70635a89fdc?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'northamerica' }, profile: { prestige: 2, urban: 2, diverse: 1, research: 1, global: 1, social: 1, humanities: 1 }, reasons: ['New York\'un kalbinde akademik mükemmellik arayışın Columbia\'da karşılığını bulacak.', 'Şehir yaşamı tercihin ve kozmopolit ruhun Columbia\'yla örtüşüyor.', 'Global bakış açın ve çeşitliliğe olan açıklığın Columbia\'da parlayacak.'] },
 
   /* Avrupa */
-  { name: 'Oxford', emoji: '📚', gradient: ['#002147', '#1a3a5c'], logo: 'https://logo.clearbit.com/ox.ac.uk', image: 'https://images.unsplash.com/photo-1580137189272-c9379f8864fd?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'europe' }, profile: { tradition: 2, research: 2, prestige: 2, humanities: 2, international: 1, european: 2 }, reasons: ['Akademik mükemmellik arayışın ve geleneğe olan saygın Oxford\'un asırlık duvarları arasında bekliyor.', 'Araştırma tutkunun Oxford\'un köklü akademik mirasıyla örtüşüyor.', 'Entelektüel merakın Oxford\'da dünya tarihine iz bırakacak.'] },
-  { name: 'Cambridge', emoji: '🏛️', gradient: ['#A3C1AD', '#003B2B'], logo: 'https://logo.clearbit.com/cam.ac.uk', image: 'https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'europe' }, profile: { tradition: 2, research: 2, prestige: 2, campus: 2, humanities: 1, european: 2 }, reasons: ['Geleneğe olan saygın ve akademik tutkun Cambridge\'in asırlık kolejlerinde bekliyor.', 'Newton\'un izinde yürüme merakın Cambridge\'i senin akademik cennetin yapıyor.', 'Kampüs yaşamına olan sevgin ve prestij arayışın burada karşılığını bulacak.'] },
-  { name: 'ETH Zürich', emoji: '🇨🇭', gradient: ['#1D3557', '#457B9D'], logo: 'https://logo.clearbit.com/ethz.ch', image: 'https://images.unsplash.com/photo-1515488764276-beab7607c1e6?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'europe' }, profile: { research: 2, engineering: 2, innovation: 1, european: 2, precision: 2 }, reasons: ['Mühendislik zekân ve hassasiyetin ETH Zürich\'in İsviçre disipliniyle örtüşüyor.', 'Avrupa\'nın en prestijli teknik üniversitesinde parlayacaksın.', 'Akademik mükemmellik arayışın ETH Zürich\'i senin yolun yapıyor.'] },
-  { name: 'Sorbonne', emoji: '🗼', gradient: ['#1B1464', '#3D1C6E'], logo: 'https://logo.clearbit.com/sorbonne-universite.fr', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'europe' }, profile: { humanities: 2, cultural: 2, european: 2, tradition: 1, urban: 2 }, reasons: ['Kültürel zenginliğe olan tutkunun Sorbonne\'un Paris\'teki kampüsünde bekliyor.', 'Avrupa tarzı akademik anlayışın Sorbonne\'la uyum sağlıyor.', 'Entelektüel merakın Paris\'in kalbinde karşılığını bulacak.'] },
-  { name: 'TU München', emoji: '🇩🇪', gradient: ['#0065BD', '#FFFFFF'], logo: 'https://logo.clearbit.com/tum.de', image: 'https://images.unsplash.com/photo-1595867818082-083862f3d630?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'europe' }, profile: { engineering: 2, european: 2, research: 1, techy: 1, innovation: 1, campus: 1 }, reasons: ['Alman mühendislik geleneği ve inovasyon ruhu TUM\'da seni bekliyor.', 'Avrupa\'nın en iyi teknik üniversitelerinden birinde yer almak tam sana göre.', 'BMW ve Siemens ile işbirliği endüstriye yakın akademik deneyim sunacak.'] },
+  { name: 'Oxford', emoji: '📚', gradient: ['#002147', '#1a3a5c'], logo: 'https://www.google.com/s2/favicons?domain=ox.ac.uk&sz=128', image: 'https://images.unsplash.com/photo-1580137189272-c9379f8864fd?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'europe' }, profile: { tradition: 2, research: 2, prestige: 2, humanities: 2, international: 1, european: 2 }, reasons: ['Akademik mükemmellik arayışın ve geleneğe olan saygın Oxford\'un asırlık duvarları arasında bekliyor.', 'Araştırma tutkunun Oxford\'un köklü akademik mirasıyla örtüşüyor.', 'Entelektüel merakın Oxford\'da dünya tarihine iz bırakacak.'] },
+  { name: 'Cambridge', emoji: '🏛️', gradient: ['#A3C1AD', '#003B2B'], logo: 'https://www.google.com/s2/favicons?domain=cam.ac.uk&sz=128', image: 'https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'europe' }, profile: { tradition: 2, research: 2, prestige: 2, campus: 2, humanities: 1, european: 2 }, reasons: ['Geleneğe olan saygın ve akademik tutkun Cambridge\'in asırlık kolejlerinde bekliyor.', 'Newton\'un izinde yürüme merakın Cambridge\'i senin akademik cennetin yapıyor.', 'Kampüs yaşamına olan sevgin ve prestij arayışın burada karşılığını bulacak.'] },
+  { name: 'ETH Zürich', emoji: '🇨🇭', gradient: ['#1D3557', '#457B9D'], logo: 'https://www.google.com/s2/favicons?domain=ethz.ch&sz=128', image: 'https://images.unsplash.com/photo-1515488764276-beab7607c1e6?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'europe' }, profile: { research: 2, engineering: 2, innovation: 1, european: 2, precision: 2 }, reasons: ['Mühendislik zekân ve hassasiyetin ETH Zürich\'in İsviçre disipliniyle örtüşüyor.', 'Avrupa\'nın en prestijli teknik üniversitesinde parlayacaksın.', 'Akademik mükemmellik arayışın ETH Zürich\'i senin yolun yapıyor.'] },
+  { name: 'Sorbonne', emoji: '🗼', gradient: ['#1B1464', '#3D1C6E'], logo: 'https://www.google.com/s2/favicons?domain=sorbonne-universite.fr&sz=128', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'europe' }, profile: { humanities: 2, cultural: 2, european: 2, tradition: 1, urban: 2 }, reasons: ['Kültürel zenginliğe olan tutkunun Sorbonne\'un Paris\'teki kampüsünde bekliyor.', 'Avrupa tarzı akademik anlayışın Sorbonne\'la uyum sağlıyor.', 'Entelektüel merakın Paris\'in kalbinde karşılığını bulacak.'] },
+  { name: 'TU München', emoji: '🇩🇪', gradient: ['#0065BD', '#FFFFFF'], logo: 'https://www.google.com/s2/favicons?domain=tum.de&sz=128', image: 'https://images.unsplash.com/photo-1595867818082-083862f3d630?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'europe' }, profile: { engineering: 2, european: 2, research: 1, techy: 1, innovation: 1, campus: 1 }, reasons: ['Alman mühendislik geleneği ve inovasyon ruhu TUM\'da seni bekliyor.', 'Avrupa\'nın en iyi teknik üniversitelerinden birinde yer almak tam sana göre.', 'BMW ve Siemens ile işbirliği endüstriye yakın akademik deneyim sunacak.'] },
 
   /* Asya */
-  { name: 'Tokyo Üniversitesi', emoji: '🗼', gradient: ['#990000', '#000000'], logo: 'https://logo.clearbit.com/u-tokyo.ac.jp', image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'asia' }, profile: { research: 2, asian: 2, prestige: 2, tradition: 1, engineering: 1, international: 1 }, reasons: ['Asya\'nın en prestijli üniversitelerinden birinde araştırma tutkun parlayacak.', 'Japon disiplini ve akademik mükemmellik Tokyo Üniversitesi\'nde seni bekliyor.', 'Doğu ile Batı\'nın akademik birleşimi benzersiz bir deneyim sunacak.'] },
-  { name: 'NUS Singapur', emoji: '🇸🇬', gradient: ['#003D7C', '#F05A28'], logo: 'https://logo.clearbit.com/nus.edu.sg', image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'asia' }, profile: { research: 1, asian: 2, modern: 1, international: 2, techy: 1, engineering: 1, innovation: 1 }, reasons: ['Asya\'nın en inovatif üniversitelerinden birinde global vizyonun parlayacak.', 'Uluslararası ortam ve modern kampüs NUS\'u ideal kılıyor.', 'Teknoloji ve girişimcilik ekosistemi Singapur\'da seni bekliyor.'] },
-  { name: 'Pekin Üniversitesi', emoji: '🇨🇳', gradient: ['#8B0000', '#FFD700'], logo: 'https://logo.clearbit.com/pku.edu.cn', image: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'asia' }, profile: { research: 2, asian: 2, prestige: 2, tradition: 1, competitive: 1, humanities: 1 }, reasons: ['Çin\'in en prestijli üniversitesinde akademik mükemmellik arayışın karşılığını bulacak.', 'Binlerce yıllık akademik geleneğin modern araştırmayla buluştuğu yerde seni bekliyor.', 'Asya\'nın yükselen gücünde yer almak vizyonunla örtüşüyor.'] },
-  { name: 'Seoul National', emoji: '🇰🇷', gradient: ['#003DA5', '#FFFFFF'], logo: 'https://logo.clearbit.com/snu.ac.kr', image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'asia' }, profile: { research: 1, asian: 2, competitive: 2, techy: 1, engineering: 1, campus: 1, prestige: 1 }, reasons: ['Güney Kore\'nin en prestijli üniversitesinde rekabetçi yapın parlayacak.', 'Teknoloji ve mühendislik tutkun Seoul National\'da karşılığını bulacak.', 'K-kültürü ve akademik mükemmellik benzersiz bir deneyim sunacak.'] },
+  { name: 'Tokyo Üniversitesi', emoji: '🗼', gradient: ['#990000', '#000000'],logo: 'https://www.google.com/s2/favicons?domain=www.u-tokyo.ac.jp&sz=128', image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'asia' }, profile: { research: 2, asian: 2, prestige: 2, tradition: 1, engineering: 1, international: 1 }, reasons: ['Asya\'nın en prestijli üniversitelerinden birinde araştırma tutkun parlayacak.', 'Japon disiplini ve akademik mükemmellik Tokyo Üniversitesi\'nde seni bekliyor.', 'Doğu ile Batı\'nın akademik birleşimi benzersiz bir deneyim sunacak.'] },
+  { name: 'NUS Singapur', emoji: '🇸🇬', gradient: ['#003D7C', '#F05A28'], logo: 'https://www.google.com/s2/favicons?domain=nus.edu.sg&sz=128', image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'asia' }, profile: { research: 1, asian: 2, modern: 1, international: 2, techy: 1, engineering: 1, innovation: 1 }, reasons: ['Asya\'nın en inovatif üniversitelerinden birinde global vizyonun parlayacak.', 'Uluslararası ortam ve modern kampüs NUS\'u ideal kılıyor.', 'Teknoloji ve girişimcilik ekosistemi Singapur\'da seni bekliyor.'] },
+  { name: 'Pekin Üniversitesi', emoji: '🇨🇳', gradient: ['#8B0000', '#FFD700'], logo: 'https://www.google.com/s2/favicons?domain=pku.edu.cn&sz=128', image: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'asia' }, profile: { research: 2, asian: 2, prestige: 2, tradition: 1, competitive: 1, humanities: 1 }, reasons: ['Çin\'in en prestijli üniversitesinde akademik mükemmellik arayışın karşılığını bulacak.', 'Binlerce yıllık akademik geleneğin modern araştırmayla buluştuğu yerde seni bekliyor.', 'Asya\'nın yükselen gücünde yer almak vizyonunla örtüşüyor.'] },
+  { name: 'Seoul National', emoji: '🇰🇷', gradient: ['#003DA5', '#FFFFFF'], logo: 'https://www.google.com/s2/favicons?domain=snu.ac.kr&sz=128', image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'asia' }, profile: { research: 1, asian: 2, competitive: 2, techy: 1, engineering: 1, campus: 1, prestige: 1 }, reasons: ['Güney Kore\'nin en prestijli üniversitesinde rekabetçi yapın parlayacak.', 'Teknoloji ve mühendislik tutkun Seoul National\'da karşılığını bulacak.', 'K-kültürü ve akademik mükemmellik benzersiz bir deneyim sunacak.'] },
 
   /* Okyanusya */
-  { name: 'Melbourne Üniversitesi', emoji: '🇦🇺', gradient: ['#003DA5', '#F2C800'], logo: 'https://logo.clearbit.com/unimelb.edu.au', image: 'https://images.unsplash.com/photo-1514395462725-fb4566210144?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'oceania' }, profile: { research: 1, oceanian: 1, international: 1, campus: 1, diverse: 1, community: 1, prestige: 1 }, reasons: ['Avustralya\'nın en prestijli üniversitelerinden birinde global vizyonun parlayacak.', 'Kampüs yaşamı ve çeşitlilik Melbourne Üniversitesi\'nde seni bekliyor.', 'Güney yarıkürede akademik mükemmellik deneyimi tam sana göre.'] },
+  { name: 'Melbourne Üniversitesi', emoji: '🇦🇺', gradient: ['#003DA5', '#F2C800'], logo: 'https://www.google.com/s2/favicons?domain=unimelb.edu.au&sz=128', image: 'https://images.unsplash.com/photo-1514395462725-fb4566210144?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'oceania' }, profile: { research: 1, oceanian: 1, international: 1, campus: 1, diverse: 1, community: 1, prestige: 1 }, reasons: ['Avustralya\'nın en prestijli üniversitelerinden birinde global vizyonun parlayacak.', 'Kampüs yaşamı ve çeşitlilik Melbourne Üniversitesi\'nde seni bekliyor.', 'Güney yarıkürede akademik mükemmellik deneyimi tam sana göre.'] },
 
   /* Kanada */
-  { name: 'Toronto Üniversitesi', emoji: '🍁', gradient: ['#002A5C', '#FFFFFF'], logo: 'https://logo.clearbit.com/utoronto.ca', image: 'https://images.unsplash.com/photo-1517090504332-8734a0a7e839?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'northamerica' }, profile: { research: 2, international: 1, diverse: 1, campus: 1, competitive: 1, engineering: 1, global: 1 }, reasons: ['Kanada\'nın en büyük araştırma üniversitesinde akademik tutkun parlayacak.', 'Çok kültürlü ortam ve güçlü araştırma imkanları seni bekliyor.', 'Yapay zeka araştırmalarının öncü merkezlerinden birinde yer almak tam sana göre.'] }
+  { name: 'Toronto Üniversitesi', emoji: '🍁', gradient: ['#002A5C', '#FFFFFF'], logo: 'https://www.google.com/s2/favicons?domain=utoronto.ca&sz=128', image: 'https://images.unsplash.com/photo-1517090504332-8734a0a7e839?w=800&h=500&fit=crop', filters: { region: 'international', continent: 'northamerica' }, profile: { research: 2, international: 1, diverse: 1, campus: 1, competitive: 1, engineering: 1, global: 1 }, reasons: ['Kanada\'nın en büyük araştırma üniversitesinde akademik tutkun parlayacak.', 'Çok kültürlü ortam ve güçlü araştırma imkanları seni bekliyor.', 'Yapay zeka araştırmalarının öncü merkezlerinden birinde yer almak tam sana göre.'] }
 ];
 
 /* ──────────────────── SONUÇ HARİTASI ──────────────────── */
@@ -564,7 +564,7 @@ function checkConfidence(categoryId, userTags, activeFilters = {}) {
 
 const MIN_QUESTIONS = 10;
 const MAX_QUESTIONS = 20;
-const EARLY_EXIT_AFTER = 15;
+const EARLY_EXIT_AFTER = 17;
 
 function shouldContinueAsking(questionCount, categoryId, userTags, activeFilters) {
   if (questionCount < MIN_QUESTIONS) return true;
